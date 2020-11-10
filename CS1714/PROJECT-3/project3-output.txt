@@ -1,0 +1,141 @@
+----------EXAMPLE-RUN-1--------------
+
+./project3 12
+
+============= PLAYER 1 V PLAYER 2 SHOWDOWN ============
+Start size: 12 cards
+Player 1 starting cards: D7 D6 R6 R6 D5 D4 A4 D3 D3 D3 D3 D3 
+Player 2 starting cards: R8 R7 R7 R6 A5 A5 A5 A4 A4 D3 D3 A1 
+
+----- ROUND 1 -----
+Player 1 (12): D7 
+Player 2 (12): R8 
+Player 1 DEFENDs and Player 2 RUNs. 
+Player 1 gets a new card. Player 2 loses their next card into the abyss.
+
+----- ROUND 2 -----
+Player 1 (12): D6 
+Player 2 (10): R7 
+Player 1 DEFENDs and Player 2 RUNs. 
+Player 1 gets a new card. Player 2 loses their next card into the abyss.
+
+----- ROUND 3 -----
+Player 1 (12): R6 
+Player 2 (8): A5 
+Player 2 ATTACKs and Player 1 RUNs.
+Player 1 loses their next card into the abyss.
+
+----- ROUND 4 -----
+Player 1 (10): D5 
+Player 2 (7): A5 
+Player 2 ATTACKs and Player 1 DEFENDs.
+Player 2 loses and Player 1 survives. 
+Player 2 loses their next card into the abyss.
+
+----- ROUND 5 -----
+Player 1 (9): D4 
+Player 2 (5): A4 
+Player 2 ATTACKs and Player 1 DEFENDs.
+Player 2 loses and Player 1 survives. 
+Player 2 loses their next card into the abyss.
+
+----- ROUND 6 -----
+Player 1 (8): A4 
+Player 2 (3): D3 
+Player 1 ATTACKs and Player 2 DEFENDs.
+Player 1 wins. Player 1 gets a new card.
+
+----- ROUND 7 -----
+Player 1 (8): D5 
+Player 2 (2): D3 
+Both players DEFEND. 
+Nothing happens.
+
+----- ROUND 8 -----
+Player 1 (7): A4 
+Player 2 (1): A1 
+Both players ATTACK. 
+Player 1 wins and gets a new card. Player 2 loses their next card into the abyss.
+
+============ GAME OVER  =============
+
+Player 1 ending cards: D3 D3 D3 D3 D3 D3 A2 
+Player 2 ending cards: 
+
+Player 2 ran out of cards. Player 1 wins.
+The end.
+
+
+
+----------EXAMPLE-RUN-2--------------
+
+./project3 12
+
+============= PLAYER 1 V PLAYER 2 SHOWDOWN ============
+Start size: 12 cards
+Player 1 starting cards: R8 R8 D7 D6 A5 A5 A3 A3 A2 R2 R2 A2
+Player 2 starting cards: D6 R6 D4 D3 D3 A3 D3 D3 R2 A2 A2 A1
+
+----- ROUND 1 -----
+Player 1 (12): R8
+Player 2 (12): D6
+Player 2 DEFENDs and Player 1 RUNs.
+Player 2 gets a new card. Player 1 loses their next card into the abyss.
+
+----- ROUND 2 -----
+Player 1 (10): D7
+Player 2 (12): R6
+Player 1 DEFENDs and Player 2 RUNs.
+Player 1 gets a new card. Player 2 loses their next card into the abyss.
+
+----- ROUND 3 -----
+Player 1 (10): R7
+Player 2 (10): A4
+Player 2 ATTACKs and Player 1 RUNs.
+Player 1 loses their next card into the abyss.
+
+----- ROUND 4 -----
+Player 1 (8): A5
+Player 2 (9): D3
+Player 1 ATTACKs and Player 2 DEFENDs.
+Player 1 wins. Player 1 gets a new card.
+
+----- ROUND 5 -----
+Player 1 (8): A5
+Player 2 (8): D3
+Player 1 ATTACKs and Player 2 DEFENDs.
+Player 1 wins. Player 1 gets a new card.
+
+----- ROUND 6 -----
+Player 1 (8): R7
+Player 2 (7): A3
+Player 2 ATTACKs and Player 1 RUNs.
+Player 1 loses their next card into the abyss.
+
+----- ROUND 7 -----
+Player 1 (6): A3
+Player 2 (6): D3
+Player 1 ATTACKs and Player 2 DEFENDs.
+Player 1 loses and Player 2 survives.
+Player 1 loses their next card into the abyss.
+
+----- ROUND 8 -----
+Player 1 (4): R2
+Player 2 (5): D3
+Player 2 DEFENDs and Player 1 RUNs.
+Player 2 gets a new card. Player 1 loses their next card into the abyss.
+
+----- ROUND 9 -----
+Player 1 (2): A2
+Player 2 (5): D6
+Player 1 ATTACKs and Player 2 DEFENDs.
+Player 1 loses and Player 2 survives.
+Player 1 loses their next card into the abyss.
+
+============ GAME OVER  =============
+
+Player 1 ending cards:
+Player 2 ending cards: R2 A2 A2 A1
+
+Player 1 ran out of cards. Player 2 wins.
+The end.

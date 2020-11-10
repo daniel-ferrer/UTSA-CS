@@ -1,0 +1,28 @@
+[4 points] - cards.h file
+	[2 points] - struct, header guard
+	[2 points] - function prototypes, enum
+	
+[22 points] - cards.c file
+	[4 points] - createCard() – dynamically allocates a new Card struct object, assigns an action using the enum based on the probabilities in the description, and returns a pointer to that new Card.
+	[5 points] - addCard() – adds a new Card to the linked list in descending order of values and returns the head.
+	[3 points] - removeCard() – removes the first Card in the linked list, deallocates it, and returns the new head of the linked list.
+	[3 points] - buildCards() - builds a new linked list based on the number of items passed into this function and returns the head of the linked list. This function internally uses calls to the createCard() and addCard() functions.
+	[3 points] - destroyCards() – deallocates the entire linked list without any memory leaks.
+	[2 points] - getLength() - returns the length of the linked list by traversing it.
+	[1 point]  - printCard() - prints out a single card’s action abbreviation and value. 
+	[1 point]  - printCards() - traverses the linked list and prints out each card by internally calling the printCard() function. 
+
+[16 points] - main.c file
+	[2 points] - Check for additional command line argument (# of cards) and validate that it is a number. End program with error if no command line argument was provided or it is not a number. 
+	[2 points] - Build initial linked list for each player using buildCards() and the command line argument.
+	[2 points] - Create game loop to continue playing until at least one player has no more cards. The game loop handles the using of each player’s first Card and removing/discarding of the Card at the end of the turn (this should happen before the punishment/reward for each action).
+	[9 points] - Implements the functionality for each of the 9 permutations of Card Actions (AA, AD, AR, DA, DD, DR, RA, RD, RR), prints out descriptive information, and makes any required changes to players’ linked lists using the linked list functions.
+	[1 point]  - Determines and prints out the final outcome when the game is over.
+	
+[2 points] - makefile
+	[2 points] - make compiles and creates the executable
+
+[6 points] – General Requirements
+	[2 points] – coding style - proper comments, indentation
+	[2 points] – correctness – compiles properly and gives correct output
+	[2 points] – submission – no missing files, zip, properly submitted
