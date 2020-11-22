@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 #include "cards.h"
 
 //helper function to get random %
@@ -18,16 +19,15 @@ int getRandom() {
 }
 
 Card* createCard() {
-	Card* newCard;
-	int tempVal, random;
+	srand(time(NULL));
+	Card* newCard = (Card*)malloc(1 * sizeof(Card));
 
-	newCard = (Card*)malloc(1 * sizeof(Card));
-
-	tempVal = rand();
-	tempVal = (tempVal % 8) + 1;
+	int tempVal = (rand() % 8) + 1;
 	newCard->value = tempVal;
 
-	random = getRandom();
+	int random = getRandom();
+
+	//int lower = 1, upper = 100, percentage
 
 	if(random == 0) {
 		newCard->ct = ATTACK;
@@ -79,7 +79,7 @@ int getLength(Card *head) {
 		return 0;
 	}
 
-	while(temp != NULL) {
+	while(curr != NULL) {
 		len++;
 		curr = curr->next;
 	}
@@ -88,7 +88,7 @@ int getLength(Card *head) {
 
 void printCard(Card *head) {
 	printf("%c", head->ct);
-	printf("%d\t", head->value);
+	printf("%d ", head->value);
 }
 
 void printCards(Card *head) {
