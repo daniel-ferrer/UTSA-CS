@@ -1,8 +1,8 @@
-#ifndef ROUTE_RECORDS_H
-#define ROUTE_RECORDS_H
+#ifndef CARDS_H
+#define CARDS_H
 
 typedef enum CardType {
-	
+
 	ATTACK,
 	DEFEND,
 	RUN
@@ -13,7 +13,7 @@ typedef struct Card_struct {
 
 	int value;
 	CardType ct;
-
+	struct Card_struct* next;
 } Card;
 
 Card* createCard();
@@ -32,4 +32,4 @@ Card* buildCards(int n);
 
 Card* destroyCards(Card *head);
 
-#endif //ROUTE_RECORDS_H
+#endif //CARDS_H
