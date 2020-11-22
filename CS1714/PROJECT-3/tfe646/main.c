@@ -4,46 +4,33 @@
 #include "cards.h"
 
 int main( int argc, char *argv[] ) {
-	FILE *fptr;
-	int deckSize, p1Size, p2Size, currRound = 1;
-	Card* p1, p2;
+	int deckSize, currRound = 1;
 
-	if(argc < 3) {
+	if(argc < 2) {
 		printf("ERROR NOT ENOUGH ARGS\n");
 		return 1;
 	}
-	else if (argc >= 3) {
-		fptr = fopen(argv[1], "r");
-	}
 	else {
-		fptr = fopen("project3-output.txt", "r");
+		deckSize = atoi(argv[1]);
 	}
 
-	deckSize = atoi(argv[2]);
 	if(deckSize < 1) {
 		printf("ERROR, ENTER DECK SIZE GREATER THAN 0\n");
 		return 1;
 	}
 
-	if (fptr == NULL) {
-		printf("ERROR FILE NOT OPEN\n");
-		return 1;
-	}
-
-	fclose(fptr);
-
 	printf("============= PLAYER 1 V PLAYER 2 SHOWDOWN ============\n");
 	printf("Start size: %d cards\n", deckSize);
 
-	p1 = buildCards(deckSize);
-	p1Size = deckSize;
+	int p1Size = deckSize;
+	Card* p1 = buildCards(p1Size);
 	printf("Player 1 starting cards: ");
 	printCards(p1);
 
 	printf("\n");
 
-	p2 = buildCards(deckSize);
-	p2Size = deckSize;
+	int p2Size = deckSize;
+	Card* p2 = buildCards(p2Size);
 	printf("Player 2 starting cards: ");
 	printCards(p2);
 
@@ -181,7 +168,7 @@ int main( int argc, char *argv[] ) {
 
 	if((p1 == NULL) && (p2 == NULL)) {
 		printf("\nBoth players ran out of cards. Tie.\n");
-		printf("The end.")
+		printf("The end.");
 	}
 	else if(p1 == NULL) {
 		printf("\nPlayer 1 ran out of cards. Player 2 wins.\n");
