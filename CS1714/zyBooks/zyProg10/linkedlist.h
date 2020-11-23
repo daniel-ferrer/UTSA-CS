@@ -1,21 +1,23 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-typedef struct LLNode {
-  int id;
-  char name[10];
-  double gpa;
-  struct LLNode *next;
+ struct Node{
+    int id;
+    char name[10];
+    double gpa;
+    struct Node *next;
 };
 
-LLNode* createNode(int id, char name[10], double gpa);
+typedef struct Node LLNode;
 
-LLNode* insertNode(LLNode* head);
+LLNode* createNode(int,char[],double);
 
-double averageGPA(LLNode* head);
+LLNode* insertNode(LLNode**,LLNode*);
 
-void printLL(LLNode* head);
+double averageGPA(LLNode**);
 
-LLNode* destroyLL(LLNode* head);
+void printLL(LLNode**);
+
+LLNode* destroyLL(LLNode**);
 
 #endif //LINKEDLIST_H
