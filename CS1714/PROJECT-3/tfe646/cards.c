@@ -4,69 +4,64 @@
 #include <time.h>
 #include "cards.h"
 
-//helper function to get random %
-int getRandom() {
-	int random = rand();
-	if(random >= RAND_MAX / 2) {
-		return 1;
-	}
-	else if((random < RAND_MAX / 2) && (random > RAND_MAX / 10)) {
-		return 0;
-	}
-	else {
-		return 2;
-	}
+char GetCardType(CardType ct) {
+	if(ct == ATTACK)
+		return 'A';
+	else if(ct == DEFEND)
+		return 'D';
+	else if(ct == RUN)
+		return 'R';
+	return ' ';
 }
 
 Card* createCard() {
-	srand(time(NULL));
 	Card* newCard = (Card*)malloc(1 * sizeof(Card));
 
-	int tempVal = (rand() % 8) + 1;
-	newCard->value = tempVal;
+	int lBound = 1, uBound = 100, pct, val;
+	pct = (rand() % (uBound - lBound + 1)) + lBound;
 
-	int random = getRandom();
-
-	//int lower = 1, upper = 100, percentage
-
-	if(random == 0) {
+	if(pct <= 40) {
+		lBound = 1;
+		uBound = 5;
 		newCard->ct = ATTACK;
 	}
-	else if(random == 1) {
+	else if(pct <= 90) {
+		lBound = 3;
+		uBound = 8;
 		newCard->ct = DEFEND;
 	}
 	else {
+		uBound = 8;
 		newCard->ct = RUN;
 	}
+	val = (rand() % (uBound - lBound + 1)) + lBound;
+	newCard->value = val;
 
 	return newCard;
 }
 
 Card* removeCard(Card *head) {
+	if(head == NULL) {
+		return NULL;
+	}
+	Card* temp = head;
 	head = head->next;
+	free(temp);
 	return head;
 }
 
 Card* addCard(Card *head, Card *c) {
-	Card* curr = head;
-	Card* prev = NULL;
-
-	if(head != NULL) {
-		while(curr->value > c->value) {
-			prev = curr;
-			curr = curr->next;
-		}
-		c->next = curr;
-		if(prev != NULL) {
-			prev->next = c;
-		}
-		else {
-			head = c;
-		}
-	}
-	else {
+	if((head == NULL) || head->value <= c->value) {
 		c->next = head;
 		head = c;
+	}
+	else {
+		Card* temp = head;
+		while((temp->next != NULL) && (temp->next->value > c->value)) {
+			temp = temp->next;
+		}
+		c->next = temp->next;
+		temp->next = c;
 	}
 	return head;
 }
@@ -87,7 +82,7 @@ int getLength(Card *head) {
 }
 
 void printCard(Card *head) {
-	printf("%c", head->ct);
+	printf("%c", GetCardType(head->ct));
 	printf("%d ", head->value);
 }
 
@@ -111,6 +106,12 @@ Card* buildCards(int n) {
 }
 
 Card* destroyCards(Card *head) {
+	Card* temp = head;
+	Card* next;
+	while(temp != NULL) {
+		next = temp->next;
+		free(temp);
+		temp = next;
+	}
 	head = NULL;
-	return head;
 }
