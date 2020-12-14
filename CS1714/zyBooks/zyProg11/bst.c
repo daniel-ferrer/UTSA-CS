@@ -3,11 +3,11 @@
 #include"bst.h"
 
 /*
-   Function: create 
+   Function: create
    -------------------
    This function creates a new BSTNode.
       v: the value to be addeded to the tree
-   Returns: New node for a Binary Search Tree 
+   Returns: New node for a Binary Search Tree
 */
 BSTNode* create(int v)
 {
@@ -19,12 +19,12 @@ BSTNode* create(int v)
 }
 
 /*
-   Function: insert 
+   Function: insert
    -------------------
    This function inserts a new BSTNode.
       root: root of current subtree
       n: node to be inserted
-   Returns: Root a Binary Search Tree 
+   Returns: Root a Binary Search Tree
 */
 BSTNode* insert(BSTNode* root, BSTNode* n)
 {
@@ -37,8 +37,43 @@ BSTNode* insert(BSTNode* root, BSTNode* n)
    return root;
 }
 
+void preorder( BSTNode* r )
+{
+  if( r == NULL )
+  {
+      return;
+    }
+    printf( "%d\t", r->value );
+    preorder( r->left );
+    preorder( r->right );
+  }
+
+  void inorder( BSTNode* r )
+  {
+    if( r == NULL )
+    {
+      return;
+    }
+    inorder( r->left );
+    printf( "%d\t", r->value );
+    inorder( r->right );
+  }
+
+  void postorder( BSTNode* r )
+  {
+    if( r == NULL )
+    {
+      return;
+    }
+
+    postorder( r->left );
+    postorder( r->right );
+
+    printf( "%d\t", r->value );
+}
+
 /*
-   Function: deleteBST 
+   Function: deleteBST
    -------------------
    This function deallocates all the nodes in the BST
       root: root of the tree/subtree
@@ -56,7 +91,7 @@ BSTNode* deleteBST(BSTNode* root)
 }
 
 /*
-   Function: find 
+   Function: find
    -------------------
    This function finds if a key value exists in a binary search tree.
       root: root of the tree/subtree
@@ -74,7 +109,7 @@ BSTNode* find(BSTNode* root, int key)
 }
 
 /*
-   Function: removeNode 
+   Function: removeNode
    -------------------
    This function removes a node with a specific value in a binary search tree.
       root: root of the tree/subtree
@@ -85,7 +120,7 @@ BSTNode* removeNode(BSTNode* root, int key)
 {
    if(root == NULL )
       return NULL;
-	
+
 	/* if key value is less than the current root's value, search to left */
    if(key < root->value)
       root->left = removeNode(root->left, key);
@@ -95,7 +130,7 @@ BSTNode* removeNode(BSTNode* root, int key)
    /* if the value was found */
    else if(root->value == key)
    {
-      /* the following if statements check the current root's descendents. 
+      /* the following if statements check the current root's descendents.
          there is a different set of actions depending. */
       if(root->left == NULL && root->right == NULL)
       {
@@ -127,4 +162,14 @@ BSTNode* removeNode(BSTNode* root, int key)
 	 	}
    }
    return root;
+}
+
+void traverseBST(BSTNode* r, enum BSTOrder order)
+{
+  if(order == PREORDER)
+    preorder(r);
+  else if(order == INORDER)
+    inorder(r);
+  else if(order == POSTORDER)
+    postorder(r);
 }
