@@ -1,5 +1,5 @@
 # Define the machine object files for your program
-OBJECTS = abc123Project0.o
+OBJECTS = tfe646Project0.o
 # Define your include file
 INCLUDES = Project0.h
 
