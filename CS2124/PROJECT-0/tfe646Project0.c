@@ -6,7 +6,7 @@ int main()
 {
 	//1.  Open the file Project0.txt and read in the first line of the file to determine how many Employees we need for our array, and use malloc() to dynamically allocate an array of this size.
 	FILE *fptr;
-	int lines, count = 0;
+	int lines, i, count = 0;
 
 	fptr = fopen("Project0Input.txt", "r");
 
@@ -31,7 +31,7 @@ int main()
 
 	//3.  Loop through your array and print out the employee information.  Each employee (name, ID, hourly rate) should be on a single line.  The name should be left justified in a column of width 10.  The IDs are each 6 digits long so they can be printed with a single space after it.  The hourly rate should be printed to 2 decimal places.
 
-	for(int i = 0; i < lines; i++)
+	for(i = 0; i < lines; i++)
 	{
 		printf("%-10s %d %0.2f\n", emps[i].name, emps[i].id, emps[i].hrlyRate);
 	}
