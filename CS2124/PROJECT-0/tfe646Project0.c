@@ -33,7 +33,7 @@ int main()
 
 	for(int i = 0; i < lines; i++)
 	{
-		printf("%s %d %0.2f\n", emps[i].name, emps[i].id, emps[i].hrlyRate);
+		printf("%-10s %d %0.2f\n", emps[i].name, emps[i].id, emps[i].hrlyRate);
 	}
 
 	free(emps);
