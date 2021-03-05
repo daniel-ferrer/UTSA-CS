@@ -85,7 +85,7 @@ int checkPrecendence(char ch)
     return 0;
 }
 
-// Remove spaces from input
+// Remove spaces from input (took from stackoverflow... not mine)
 char* deblank(char* input)                                         
 {
     int i,j;

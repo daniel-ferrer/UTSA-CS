@@ -20,7 +20,7 @@ int main()
 
 	//This string will hold the infix equations that are read from inputFile, one at a time.
 	char infixString[MAX_LINE_LENGTH];
-
+  int lines;
 
 	//Use fgets to read the next line from the inputFile.
 	//Store the line into infixString.
@@ -98,12 +98,12 @@ int convertToPostfix(char *infixString, char *postfixString)
   deblank(infixString);
 	int i = 0, j = 0, err = 0;
 	char ch;
-	Element ele, ele2;
+	
 	Stack myStack = newStack(MAX_LINE_LENGTH);
   ch = infixString[i];
 	while(ch != '\0' && ch != '\n')
  	{
-
+    Element ele, ele2;
 		if(isOperator(ch) == 1) //if ch scanned is an operator
     {
       if(isEmpty(myStack) == 1) // if stack is empty
@@ -113,12 +113,12 @@ int convertToPostfix(char *infixString, char *postfixString)
       }
       else
       {
-        if(checkPrecendence(ch) == 2)
+        if(checkPrecendence(ch) == 2) // check operator precendence for '*' or '/'
         {
-          while(isEmpty(myStack) == 0)
+          while(isEmpty(myStack) == 0) //while stack is not empty
           {
             ele = topElement(myStack);
-            if(ele.operation == '/' || ele.operation == '*')
+            if(checkPrecendence(ele.operation) == 2) //check operator precendence for '*' or '/'
             {
               ele = pop(myStack);
               postfixString[j] = ele.operation;
@@ -130,7 +130,7 @@ int convertToPostfix(char *infixString, char *postfixString)
           push(myStack, ele2);
         }
         
-        if(checkPrecendence(ch) == 1)
+        if(checkPrecendence(ch) == 1) // check operator precendence for '+' or '-'
         {
           while(isEmpty(myStack) == 0)
           {
@@ -142,10 +142,7 @@ int convertToPostfix(char *infixString, char *postfixString)
               j++;
             }
             else
-            {
-              printf("rand break");
               break;
-            }
           }
           
           ele2.operation = ch;
@@ -153,22 +150,22 @@ int convertToPostfix(char *infixString, char *postfixString)
         } 
       }
     }
-    else if(ch == '(')
+    else if(ch == '(') //if open paren is found
     {
       ele.operation = ch;
-      push(myStack, ele);
+      push(myStack, ele); //push onto stack
     }
-    else if(ch == ')')
+    else if(ch == ')') // if close paren is found
     {
       ele = topElement(myStack);
-      while(ele.operation != '(')
+      while(ele.operation != '(') //look for close paren in stack
       {
-        ele = pop(myStack);
-        if(isEmpty(myStack) == 1)
+        ele = pop(myStack); // pop ele in stack until close paren is found
+        if(isEmpty(myStack) == 1) //if stack is empty and no close paren is found
         {
           freeStack(myStack);
           err = 1;
-          return err;
+          return err; //return err no closing paren
         }
         postfixString[j] = ele.operation;
         j++;
@@ -180,39 +177,40 @@ int convertToPostfix(char *infixString, char *postfixString)
       {
         freeStack(myStack);
         err = 1;
-        return err;
+        return err; //return err no closing paren
       }
     }
-    else
+    else // isalpha(ch) == true
     {
         postfixString[j] = ch;
         j++;
     }
-    i++;
+    i++; // iterate next idx
     ch = infixString[i];
     
   } // end while
   
-  if(isEmpty(myStack) == 0)
+  if(isEmpty(myStack) == 0) // if stack is not empty
   {
-    while(isEmpty(myStack) == 0)
-    {
+    while(isEmpty(myStack) == 0) // while stack is not empty
+    { 
+      Element ele;
       ele = topElement(myStack);
-      if(ele.operation == '(')
+      if(ele.operation == '(') //if top element is open paren
       {
         freeStack(myStack);
-        err = 2;
+        err = 2; // there will be no close paren in stack, return err 2
         return err;
       }
-      else if(isOperator(ele.operation) == 1)
+      else if(isOperator(ele.operation) == 1) // if operator is found
       {
         ele = pop(myStack);
-        postfixString[j] = ele.operation;
+        postfixString[j] = ele.operation; // pop and append to postfixString
         j++;
       }
     }
   }
-  postfixString[j] = '\0';
+  postfixString[j] = '\0'; // terminate postfixString
   freeStack(myStack);
   return 0;
   
