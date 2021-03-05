@@ -65,6 +65,9 @@
    return s->stackElements[s->count - 1];
  }
 
+
+// HELPER FUNCTIONS //
+
 // Determine whether character is an operator
 int isOperator(char ch)
 {
@@ -74,7 +77,7 @@ int isOperator(char ch)
     return 0;
 }
 
-// Compare precendence of operators moving in and out of stack
+// Compare precendence of operators
 int checkPrecendence(char ch)
 {
   if(ch == '*' || ch == '/')
@@ -85,7 +88,8 @@ int checkPrecendence(char ch)
     return 0;
 }
 
-// Remove spaces from input (took from stackoverflow... not mine)
+// Remove spaces from input (borrowed from stackoverflow code is NOT MINE!)
+// Using function to modify output styling
 char* deblank(char* input)                                         
 {
     int i,j;
