@@ -20,7 +20,7 @@ int main()
 
 	//This string will hold the infix equations that are read from inputFile, one at a time.
 	char infixString[MAX_LINE_LENGTH];
-  
+
 
 	//Use fgets to read the next line from the inputFile.
 	//Store the line into infixString.
@@ -32,7 +32,7 @@ int main()
 		if(infixString[0] == '\n')
       continue;
 
-		
+
 		printf("Current infix string: %s",infixString);
 
 		//postfixString is a string to store the equation from szInfixString converted into postfix.
@@ -40,7 +40,7 @@ int main()
 		char postfixString[MAX_LINE_LENGTH];
 
 		//Call the convertToPostfix function (that you are to implement below main).
-     
+
 		int returnMessage = convertToPostfix(infixString,postfixString);
 
 
@@ -99,15 +99,16 @@ If there is a missing operand, return 4 (for extra credit).
 int convertToPostfix(char *infixString, char *postfixString)
 {
   deblank(infixString);
-	int i = 0, j = 0, err = 0;
+	int i = 0, j = 0, err = 0, operatorCnt = 0, operandCnt = 0;
 	char ch = infixString[i];
 	Stack myStack = newStack(MAX_LINE_LENGTH);
- 
+
 	while(ch != '\0' && ch != '\n')
  	{
     Element ele, ele2;
 		if(isOperator(ch) == 1) // if ch scanned is an operator
     {
+			operatorCnt++;
       if(isEmpty(myStack) == 1) // if stack is empty
       {
         ele.operation = ch;
@@ -148,16 +149,16 @@ int convertToPostfix(char *infixString, char *postfixString)
           }
           ele2.operation = ch;
           push(myStack, ele2);
-        } 
+        }
       }
     }
     else if(ch == '(') //if open paren is found push onto stack
     {
       ele.operation = ch;
-      push(myStack, ele); 
+      push(myStack, ele);
     }
     else if(ch == ')') // if close paren is found
-    { 
+    {
       if(isEmpty(myStack) == 1) //push onto stack if its empty
       {
         ele.operation = ch;
@@ -190,18 +191,19 @@ int convertToPostfix(char *infixString, char *postfixString)
     }
     else // isalpha(ch) == true
     {
+				operandCnt++;
         postfixString[j] = ch;
         j++;
     }
     i++; // iterate next idx
     ch = infixString[i];
-    
+
   } // end while
-  
+
   if(isEmpty(myStack) == 0) // if stack is not empty
   {
     while(isEmpty(myStack) == 0) // while stack is not empty
-    { 
+    {
       Element ele;
       ele = topElement(myStack);
       if(ele.operation == '(') //if top element is open paren
@@ -218,9 +220,23 @@ int convertToPostfix(char *infixString, char *postfixString)
       }
     }
   }
-  postfixString[j] = '\0'; // terminate postfixString
-  freeStack(myStack);
-  return 0;
+	if(operatorCnt == 0)
+	{
+		err = 3;
+		return err;
+	}
+	else if(operandCnt == 0)
+	{
+		err = 4;
+		return err;
+	}
+	else
+	{
+		postfixString[j] = '\0'; // terminate postfixString
+	  freeStack(myStack);
+	  return 0;
+	}
+  
 } // end func
 
 /************
@@ -239,7 +255,7 @@ int evaluatePostfix(char *postfixString)
   char ch = postfixString[i];
   Stack myStack = newStack(MAX_LINE_LENGTH);
   Element op1, op2, temp;
-  
+
   while(ch != '\0' && ch != '\n')
   {
     if(isdigit(ch)) //move operands to stack
@@ -251,7 +267,7 @@ int evaluatePostfix(char *postfixString)
     {
       op1 = pop(myStack);
       op2 = pop(myStack);
-      
+
       switch(ch)
       {
         case '*':

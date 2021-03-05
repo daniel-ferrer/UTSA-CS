@@ -9,6 +9,7 @@ Purpose:
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 
 
 
@@ -75,4 +76,4 @@ int isOperator(char ch);
 int checkPrecendence(char ch);
 
 // Remove spaces from input
-char* deblank(char* input);                                    
+char* deblank(char* input);
