@@ -29,8 +29,9 @@ int main()
 
 		//If the line is blank, skip it.
 		if(infixString[0] == '\n')
-		continue;
+      continue;
 
+		
 		printf("Current infix string: %s",infixString);
 
 		//postfixString is a string to store the equation from szInfixString converted into postfix.
@@ -66,9 +67,7 @@ int main()
 			default:
 			printf("WARNING: %d.\n", returnMessage);
 
-
 		}
-
 
 		printf("\n\n");
 	}
@@ -96,71 +95,129 @@ If there is a missing operand, return 4 (for extra credit).
 *********/
 int convertToPostfix(char *infixString, char *postfixString)
 {
-	int i, err;
-	int j = 0;
+  deblank(infixString);
+	int i = 0, j = 0, err = 0;
 	char ch;
 	Element ele, ele2;
 	Stack myStack = newStack(MAX_LINE_LENGTH);
+  ch = infixString[i];
+	while(ch != '\0' && ch != '\n')
+ 	{
 
-	for(i = 0; ch != '\0' && ch != '\n'; i++)
-	{
-		ch = infixString[i];
-		err = 0;
-
-		if(ch == '(')
-		{
-			ele.operation = ch;
-			push(myStack, ele.operation);
-		}
-		else if(isdigit(ch))
-		{
-			postfixString[j] = ch;
-			j++;
-		}
-		else if(isOperator(ch) == 1)
-		{
-			ele.operation = pop(myStack);
-			ele2.operation = ch;
-			while(isOperator(ele.operation) == 1 && checkPrecendence(ele.operation) >= checkPrecendence(ch))
-			{
-				postfixString[j] = ele.operation;
-				j++;
-				ele.operation = pop(myStack);
-			}
-			push(myStack, ele.operation);
-			push(myStack, ele2.operation);
-		}
-		else if(ch == ')')
-		{
-			ele = topElement(myStack);
-			while(ele.operation != '(')
-			{
-				ele = pop(myStack);
-				if(isEmpty(myStack) == 1)
-				{
-					freeStack(myStack);
-					err = 1;
-					return err;
-				}
-				postfixString[j] = ele.operation;
-				j++;
-				ele = topElement(myStack);
-			}
-			ele = pop(myStack);
-			if(ele.operation != '(')
-			{
-				freeStack(myStack);
-				err = 1;
-				return err;
-			}
-
-
-
-	} //end for
-
-
-
-} //end func
+		if(isOperator(ch) == 1) //if ch scanned is an operator
+    {
+      if(isEmpty(myStack) == 1) // if stack is empty
+      {
+        ele.operation = ch;
+        push(myStack, ele); // push ele to stack
+      }
+      else
+      {
+        if(checkPrecendence(ch) == 2)
+        {
+          while(isEmpty(myStack) == 0)
+          {
+            ele = topElement(myStack);
+            if(ele.operation == '/' || ele.operation == '*')
+            {
+              ele = pop(myStack);
+              postfixString[j] = ele.operation;
+              j++;
+            }
+          }
+          
+          ele2.operation = ch;
+          push(myStack, ele2);
+        }
+        
+        if(checkPrecendence(ch) == 1)
+        {
+          while(isEmpty(myStack) == 0)
+          {
+            ele = topElement(myStack);
+            if(ele.operation != '(')
+            {
+              ele = pop(myStack);
+              postfixString[j] = ele.operation;
+              j++;
+            }
+            else
+            {
+              printf("rand break");
+              break;
+            }
+          }
+          
+          ele2.operation = ch;
+          push(myStack, ele2);
+        } 
+      }
+    }
+    else if(ch == '(')
+    {
+      ele.operation = ch;
+      push(myStack, ele);
+    }
+    else if(ch == ')')
+    {
+      ele = topElement(myStack);
+      while(ele.operation != '(')
+      {
+        ele = pop(myStack);
+        if(isEmpty(myStack) == 1)
+        {
+          freeStack(myStack);
+          err = 1;
+          return err;
+        }
+        postfixString[j] = ele.operation;
+        j++;
+        ele = topElement(myStack);
+      }
+      ele = pop(myStack);
+      
+      if(ele.operation != '(')
+      {
+        freeStack(myStack);
+        err = 1;
+        return err;
+      }
+    }
+    else
+    {
+        postfixString[j] = ch;
+        j++;
+    }
+    i++;
+    ch = infixString[i];
+    
+  } // end while
+  
+  if(isEmpty(myStack) == 0)
+  {
+    while(isEmpty(myStack) == 0)
+    {
+      ele = topElement(myStack);
+      if(ele.operation == '(')
+      {
+        freeStack(myStack);
+        err = 2;
+        return err;
+      }
+      else if(isOperator(ele.operation) == 1)
+      {
+        ele = pop(myStack);
+        postfixString[j] = ele.operation;
+        j++;
+      }
+    }
+  }
+  postfixString[j] = '\0';
+  freeStack(myStack);
+  return 0;
+  
+  
+} // end func
 
 
 
@@ -176,8 +233,9 @@ If your convertToPostfix() function is correct, this string should be in a valid
 Output:
 Return an integer representing what the postfix equation evaluated to.
 ************/
-int evaluatePostfix(char *postfixString){
+//int evaluatePostfix(char *postfixString)
+//{
 
+  //return 0;
 
-
-}
+//}

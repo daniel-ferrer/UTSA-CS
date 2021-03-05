@@ -72,4 +72,7 @@ Element topElement(Stack s);
 int isOperator(char ch);
 
 // Compare precendence of operators moving in and out of stack
-int checkPrecendence(char ch)
+int checkPrecendence(char ch);
+
+// Remove spaces from input
+char* deblank(char* input);                                    

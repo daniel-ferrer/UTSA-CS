@@ -37,10 +37,6 @@
      s->stackElements[s->count] = e;
      s->count++;
 
-     //Element temp = topElement(s);
-     //topElement(s) = e;
-     //s[s->count] = temp;
-     //s->count++;
    }
  }
 
@@ -49,7 +45,7 @@
  Element pop(Stack s)
  {
    s->count--;
-   return s->stackElements[s->count]
+   return s->stackElements[s->count];
  }
 
 
@@ -70,7 +66,7 @@
  }
 
 // Determine whether character is an operator
-int isOperator(char ch);
+int isOperator(char ch)
 {
   if(ch == '+' || ch == '-' || ch == '*' || ch == '/')
     return 1;
@@ -87,5 +83,20 @@ int checkPrecendence(char ch)
     return 1;
   else
     return 0;
+}
 
+// Remove spaces from input
+char* deblank(char* input)                                         
+{
+    int i,j;
+    char *output=input;
+    for (i = 0, j = 0; i<strlen(input); i++,j++)          
+    {
+        if (input[i]!=' ')                           
+            output[j]=input[i];                     
+        else
+            j--;                                     
+    }
+    output[j]=0;
+    return output;
 }
