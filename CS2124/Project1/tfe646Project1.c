@@ -195,7 +195,7 @@ int convertToPostfix(char *infixString, char *postfixString)
         postfixString[j] = ch;
         j++;
     }
-    i++; // iterate next idx
+    i++;
     ch = infixString[i];
 
   } // end while
@@ -225,7 +225,7 @@ int convertToPostfix(char *infixString, char *postfixString)
 		err = 3;
 		return err;
 	}
-	else if(operandCnt == 0)
+	else if(operandCnt <= 1)
 	{
 		err = 4;
 		return err;
