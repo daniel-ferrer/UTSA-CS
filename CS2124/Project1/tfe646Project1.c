@@ -48,8 +48,8 @@ int main()
 
 			case 0: //0 means the infix string had no errors.  Go ahead and evaluate the postfix string.
 			printf("Postfix string: %s\n",postfixString);
-			int result = evaluatePostfix(postfixString);
-			printf("It evaluates to %d.\n",result);
+			//int result = evaluatePostfix(postfixString);
+			//printf("It evaluates to %d.\n",result);
 			break;
 			case 1:  //1 means the infix string is missing a left parenthesis.
 			printf("WARNING: Missing left parenthesis.\n");
@@ -98,125 +98,69 @@ int convertToPostfix(char *infixString, char *postfixString)
 {
 	int i, err;
 	int j = 0;
-	Element e, e2;
-	char chIn = infixString[i];
+	char ch;
+	Element ele, ele2;
 	Stack myStack = newStack(MAX_LINE_LENGTH);
 
-	for(i = 0; chIn != '\0' && chIn != '\n'; i++) // looping through expression given
+	for(i = 0; ch != '\0' && ch != '\n'; i++)
 	{
-		err = 0; // init err counter to 0
-		if(chIn == '/' || chIn == '*' || chIn == '-' || chIn == '+') // if infixString[i] is an operator
-		{
-			if(isEmpty(myStack)) //if stack is empty
-			{
-				e.operation = chIn;
-				push(myStack, e);
-			}
-			else // if stack is not empty
-			{
-				if(chIn == '*' || chIn == '/')
-				{
-					while(!isEmpty(myStack))
-					{
-						e = topElement(myStack);
-						if(e.operation == '/' || e.operation == '*')
-						{
-							e = pop(myStack);
-							postfixString[j] = e.operation;
-							j++;
-						}
-					}
-					e2.operation = chIn;
-					push(e, e2);
-				}
-				if(chIn == '-' || chIn == '+')
-				{
-					while(!isEmpty(myStack))
-					{
-						e = topElement(myStack);
-						if(e.operation != '(')
-						{
-							e = pop(myStack);
-							postfixString[j] = e.operation;
-							j++
-						}
-						else
-						{
-							break;
-						}
-					}
+		ch = infixString[i];
+		err = 0;
 
-					e2.operation = chIn;
-					push(e, e2);
-				}
-			}
+		if(ch == '(')
+		{
+			ele.operation = ch;
+			push(myStack, ele.operation);
 		}
-		else if(chIn == '(')
+		else if(isdigit(ch))
 		{
-			e.operation = chIn;
-			push(myStack, e);
+			postfixString[j] = ch;
+			j++;
 		}
-		else if(chIn == ')')
+		else if(isOperator(ch) == 1)
 		{
-			e = topElement(myStack);
-
-			while(e.operation != '(')
+			ele.operation = pop(myStack);
+			ele2.operation = ch;
+			while(isOperator(ele.operation) == 1 && checkPrecendence(ele.operation) >= checkPrecendence(ch))
 			{
-				e = pop(myStack);
-
-				if(isEmpty(myStack))
+				postfixString[j] = ele.operation;
+				j++;
+				ele.operation = pop(myStack);
+			}
+			push(myStack, ele.operation);
+			push(myStack, ele2.operation);
+		}
+		else if(ch == ')')
+		{
+			ele = topElement(myStack);
+			while(ele.operation != '(')
+			{
+				ele = pop(myStack);
+				if(isEmpty(myStack) == 1)
 				{
 					freeStack(myStack);
-
 					err = 1;
 					return err;
 				}
-				postfixString[j] = e.operation;
-				j++
-				e = topElement(myStack);
+				postfixString[j] = ele.operation;
+				j++;
+				ele = topElement(myStack);
 			}
-			e = pop(myStack);
-
-			if(e.operation != '(')
+			ele = pop(myStack);
+			if(ele.operation != '(')
 			{
 				freeStack(myStack);
 				err = 1;
 				return err;
 			}
-		}
-		else
-		{
-			postfixString[j] == chIn;
-			j++;
-		}
-		chIn = infixString[i];
-	}
 
-	if(!isEmpty(myStack))
-	{
-		do {
-			e = topElement(myStack);
 
-			if(e.operation == '(')
-			{
-				freeStack(myStack);
-				err = 2;
-				return err;
-			}
-			else if(e.operation == '/' || e.operation == '*' || e.operation == '-' || e.operation == '+')
-			{
-				e = pop(myStack);
-				postfixString[j] = e.operation;
-			}
 
-		} while(!isEmpty(myStack));
-	}
+	} //end for
 
-	postfixString[j] = '\0';
-	freeStack(myStack);
-	return 0;
 
-}
+
+} //end func
 
 
 

@@ -12,7 +12,7 @@ Purpose:
 
 
 
-//We want two different types of stacks in our program. 
+//We want two different types of stacks in our program.
 //When converting infix to postfix, we want a stack to store operators and parenthesis (characters).
 //When evaluating a postfix string, we want a stack to store operands (integers).
 //Therefore we are defining an Element to be the union of a char and int, and we can define our Stack to be a Stack of Elements.
@@ -27,14 +27,14 @@ typedef struct
 {
 	//The maximum size of the stack.
 	int maxSize;
-	
+
 	//The number of elements currently in the stack.
 	int count;
-	
+
 	//Pointer to an array of Elements to store data in the stack.
 	Element *stackElements;
-	
-	
+
+
 } StackImp;
 
 
@@ -68,3 +68,8 @@ int isEmpty(Stack s);
 //Return the value of the top element of the stack (without removing it).
 Element topElement(Stack s);
 
+//Determine whether character is an operator
+int isOperator(char ch);
+
+// Compare precendence of operators moving in and out of stack
+int checkPrecendence(char ch)

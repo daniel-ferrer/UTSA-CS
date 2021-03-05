@@ -57,13 +57,9 @@
  int isEmpty(Stack s)
  {
    if(s->count == 0)
-   {
      return 1;
-   }
    else
-   {
      return 0;
-   }
  }
 
 
@@ -72,3 +68,24 @@
  {
    return s->stackElements[s->count - 1];
  }
+
+// Determine whether character is an operator
+int isOperator(char ch);
+{
+  if(ch == '+' || ch == '-' || ch == '*' || ch == '/')
+    return 1;
+  else
+    return 0;
+}
+
+// Compare precendence of operators moving in and out of stack
+int checkPrecendence(char ch)
+{
+  if(ch == '*' || ch == '/')
+    return 2;
+  else if(ch == '+' || ch == '-')
+    return 1;
+  else
+    return 0;
+
+}
