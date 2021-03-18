@@ -1,5 +1,5 @@
 # Define the machine object files for your program
-OBJECTS = abc123p2.o Queue.o
+OBJECTS = tfe646p2.o Queue.o
 # Define your include file
 INCLUDES = Queue.h
 
