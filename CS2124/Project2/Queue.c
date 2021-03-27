@@ -29,10 +29,10 @@
 
  //Allocate a new node and store "value" as the Element in the node.  Return the address of the node.
  NodeLL *allocateNode(Element value) {
-   NodeLL *temp = (*NodeLL) malloc (sizeof(NodeLL));
-   temp->element = value;
-   temp->next = NULL;
-   return temp;
+   NodeLL *node = (*NodeLL) malloc (sizeof(NodeLL));
+   node->element = value;
+   node->next = NULL;
+   return node;
  }
 
 
@@ -42,7 +42,6 @@
    if(q->head == NULL) {
      q->head = temp;
      q->foot = temp;
-     //return;
    }
    q->foot->next = temp;
    q->foot = temp;
@@ -53,7 +52,7 @@
  //Functionally return TRUE (1) if the dequeue was successful and return FALSE (0) if it was not successful (i.e., the queue was empty).
  //Remember to consider any "edge cases" (e.g., when the queue becomes empty after this dequeue).
  int dequeue(Queue q, Element *e) {
-   if(q->head == NULL) {
+   if(isEmpty(q)) {
      return FALSE;
    }
    NodeLL *temp = q->head;
@@ -69,7 +68,7 @@
  //Return the value of the element stored in the first node of the queue without removing the node itself (similar to topElement() for Stacks).
  //Return the value through e that is passed by reference, and return TRUE (1) if the call was successful and return FALSE (0) if it was not successful (i.e., the queue was empty).
  int frontElement(Queue q, Element *e) {
-   if(q->head == NULL) {
+   if(isEmpty(q)) {
      return FALSE;
    }
    e = &(q->head->element);
