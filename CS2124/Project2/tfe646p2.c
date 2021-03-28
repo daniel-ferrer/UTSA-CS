@@ -11,7 +11,7 @@ int main()
     perror("Error opening file");
     return -1;
   }
-    int arrivalTime,patientId;
+    int arrivalTime,patientId, i, k, z;
     int checkInTableSize=5, vaccineTableSize=10, patientOnCheckInTable=0, PatientOnVaccineTable=0;
     char buf[3];
     Queue checkInQueue= newQueue();
@@ -32,11 +32,11 @@ int main()
     //This queue is for those peoples who already got vaccinated but waiting for 30 minutes.
     Queue vaccinatedQueue= newQueue();
     //Their vaccination end time is stored in this array.
-    int vaccinatedPersonEndTime[10000],endTimeIndex=0;
-    for(int i=1;;i++){
+    int vaccinatedPersonEndTime[999],endTimeIndex=0;
+    for(i=1;;i++){
 
         //Check for patients on vaccine table
-        for(int k=0;k<10;k++){
+        for(k=0;k<10;k++){
             if((arrivalTimeOnVaccineTable[k]!=-1))
             {
                 if(i-arrivalTimeOnVaccineTable[k]>=10){
@@ -53,7 +53,7 @@ int main()
             Element* element;
             int exist=frontElement(vaccineShotQueue,element),k=0;
             if(exist==1){
-                for(int z=0;z<10;z++){
+                for(z=0;z<10;z++){
                     if(arrivalTimeOnVaccineTable[z]==-1 ){
                         vaccineShotArray[z]=*element;
                         arrivalTimeOnVaccineTable[z]=i;
@@ -68,7 +68,7 @@ int main()
         }
 
         //Adding patients from checkinTable to VaccineShotQueue
-        for(int k=0;k<5;k++){
+        for(k=0;k<5;k++){
             if((arrivalTimeOnCheckInTable[k]!=-1))
             {
                 if((patientArray[k].eCheckIn==1 && i-arrivalTimeOnCheckInTable[k]>=4) || (patientArray[k].eCheckIn==0 && i-arrivalTimeOnCheckInTable[k]>=10)) {
@@ -86,7 +86,7 @@ int main()
             if(exist==1){
                if(element->arrivalTime <=i)
                {
-                   for(int k=0;k<5;k++){
+                   for(k=0;k<5;k++){
                        if(arrivalTimeOnCheckInTable[k]==-1){
                            patientArray[k]=*element;
                            arrivalTimeOnCheckInTable[k]=i;
@@ -95,7 +95,7 @@ int main()
                        }
                    }
                }
-            }else{
+            } else {
                 break;
            }
         }

@@ -25,7 +25,7 @@ typedef struct
 } Patient;
 
 
-//Typedef so that the Element that we will use in the Queue is the Patient struct.
+//Typedef so that the Element that we will use in the Queue is-- the Patient struct.
 typedef Patient Element;
 
 //Typedef for a node a linked list.
