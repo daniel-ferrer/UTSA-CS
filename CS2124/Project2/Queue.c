@@ -7,7 +7,7 @@
 
  //Malloc a new QueueImp, set the head and foot pointers to NULL, and return it's address.
  Queue newQueue() {
-   QueueImp *myQ = (*Queue) malloc (sizeof(QueueImp));
+   QueueImp *myQ = (*Queue)malloc(sizeof(QueueImp));
    myQ->head = NULL;
    myQ->foot = NULL;
 
@@ -29,7 +29,7 @@
 
  //Allocate a new node and store "value" as the Element in the node.  Return the address of the node.
  NodeLL *allocateNode(Element value) {
-   NodeLL *node = (*NodeLL) malloc (sizeof(NodeLL));
+   NodeLL *node = (*NodeLL)malloc(sizeof(NodeLL));
    node->element = value;
    node->next = NULL;
    return node;
