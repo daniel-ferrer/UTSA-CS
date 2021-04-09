@@ -36,16 +36,45 @@
  //Given a BinarySearchTree and a searchValue, return a pointer to the node in the tree that contains searchValue if you find it or return NULL if it does not exist.
  // I recommend writing a secondary function to recursively search the tree.
  NodeT *search(BinarySearchTree tree, int searchValue) {
-   if (tree->root == NULL || tree->root->element->accountNumber == searchValue) {
+   if(tree->root->element.accountNumber == searchValue) {
      return tree->root;
    }
-   else if(searchValue < tree->root->element->accountNumber) {
-     return search(tree->root->left, searchValue);
-   }
    else {
-     return search(tree->root->right, searchValue);
+     while(tree->root->element.accountNumber != searchValue) {
+       if(searchValue < tree->root->element.accountNumber) {
+         if(tree->root->left->element.accountNumber == searchValue) {
+           return tree->root->left;
+         }
+         else {
+           tree->root = tree->root->left;
+           
+         }
+       }
+       else {
+         if(tree->root->right->element.accountNumber == searchValue) {
+           return tree->root->right;
+
+         }
+         else {
+           tree->root = tree->root->right;
+         }
+       }
+     }
+     return NULL;
    }
-   return NULL;
+
+ 
+//   if (tree->root == NULL || tree->root->element.accountNumber == searchValue) {
+//     return tree->root;
+//   }
+//   else if(searchValue < tree->root->element.accountNumber) {
+//     return search(tree->root->left, searchValue);
+//   }
+//   else {
+//     return search(tree->root->right, searchValue);
+//   }
+
+
  }
 
  //Create a node to store the given Element and add it as a leaf in the BinarySearchTree.  Do not worry about balancing the tree for this project.
@@ -59,44 +88,31 @@
      return TRUE;
    }
    else {
-     NodeT* tempRoot = tree->root;
-     while(tempRoot != NULL) {
-       if(tempRoot->element.accountNumber == value.accountNumber) {
-         return FALSE; //account already exists
+     while(tree->root != NULL) {
+       if(tree->root->element.accountNumber == value.accountNumber) {
+         return FALSE; 
        }
-       else if(value.accountNumber < tempRoot->element.accountNumber){
-         if(tempRoot->left == NULL) {
-           tempRoot->left = node;
+       else if(value.accountNumber < tree->root->element.accountNumber){
+         if(tree->root->left == NULL) {
+           tree->root->left = node;
            return TRUE;
          }
          else {
-           tempRoot = tempRoot->left;
+           tree->root = tree->root->left;
          }
        }
        else {
-         if(tempRoot->right == NULL) {
-           tempRoot->right = node;
+         if(tree->root->right == NULL) {
+           tree->root->right = node;
            return TRUE;
          }
          else {
-           tempRoot = tempRoot->right;
+           tree->root = tree->root->right;
          }
        }
      }
      return FALSE;
    }
-
-   // else if(value->accountNumber == tree->root->element->accountNumber) {
-   //   return FALSE;
-   // }
-   // else {
-   //   if(value->accountNumber < tree->root->element->accountNumber) {
-   //     insert(tree->root->left, value);
-   //   }
-   //   else {
-   //     insert(tree->root->right, value);
-   //   }
-   // }
 
  }
 
@@ -105,20 +121,43 @@
  void printInOrder(BinarySearchTree tree) {
    if(tree->root == NULL)
    {
-     return -1;
+     return;
    }
-   printInOrder(tree->root->left);
-   printf("%d %f\n", tree->root->element->accountNumber, tree->root->element->accountBalance);
-   printInOrder(tree->root->right);
+   NodesInOrder(tree->root);
+    
+ }
+ 
+ void NodesInOrder(NodeT* root) {
+   if(root == NULL) {
+     return;
+   }
+  
+   NodesInOrder(root->left);
+   printf("%d %f\n", root->element.accountNumber, root->element.accountBalance);
+   NodesInOrder(root->right);
+   
  }
 
  //Print the key values of all nodes in the subtree rooted at p according to a preorder traversal.  I recommend writing a secondary function to recursively traverse the nodes.
  void printPreOrder(BinarySearchTree tree) {
    if(tree->root == NULL)
    {
-     return -1;
+     return;
    }
-   printf("%d %f\n", tree->root->element->accountNumber, tree->root->element->accountBalance);
-   printPreOrder(tree->root->left);
-   printPreOrder(tree->root->right);
+
+   NodesPreOrder(tree->root);
+
+ }
+ 
+ void NodesPreOrder(NodeT* root) {
+   if(root != NULL) {
+     printf("%d %f\n", root->element.accountNumber, root->element.accountBalance);
+     NodesPreOrder(root->left);
+     NodesPreOrder(root->right);
+   }
+   else {
+     return;
+   }
+
+   
  }

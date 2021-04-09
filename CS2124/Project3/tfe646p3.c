@@ -22,21 +22,23 @@ int main()
     if(strcmp(cmd, "CREATE") == 0) {
       fscanf(fptr, "%d", &account.accountNumber);
       if(insert(myTree, account)) {
-        printf("Created new account %d", account.accountNumber);
+        printf("Created new account %d\n", account.accountNumber);
       }
       else {
-        printf("Account %d not created", account.accountNumber);
+        printf("Account %d not created\n", account.accountNumber);
       }
     }
 
     else if(strcmp(cmd, "SALE") == 0) {
+      int tempAccNum;
       double tempBal;
-      fscanf(fptr, "%d %f", &account.accountNumber, &tempBal);
-      if(search(myTree-, account.accountNumber) == NULL) {
-        printf("Account %d not found", account.accountNumber);
+      fscanf(fptr, "%d %lf", &tempAccNum, &tempBal);
+      printf("Test\n");
+      if(search(myTree, tempAccNum) == NULL) {
+        printf("Account %d not found\n", tempAccNum);
       }
       else {
-        printf("Account %d found", account.accountNumber);
+        printf("Account %d found\n", tempAccNum);
         account.accountBalance +=  tempBal;
       }
     }
@@ -45,9 +47,11 @@ int main()
       char printType[8];
       fscanf(fptr, "%s", printType);
       if(strcmp(printType, "PREORDER") == 0) {
+        printf("Printing preorder\n");
         printPreOrder(myTree);
       }
       else if(strcmp(printType, "INORDER") == 0) {
+        printf("Printing inorder\n");
         printInOrder(myTree);
       }
     }
