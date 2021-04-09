@@ -22,7 +22,7 @@ int main()
     if(strcmp(cmd, "CREATE") == 0) {
       fscanf(fptr, "%d", &account.accountNumber);
       if(insert(myTree, account)) {
-        printf("Created new account %d\n", account.accountNumber);
+        printf("%d %lf\n", account.accountNumber, account.accountBalance);
       }
       else {
         printf("Account %d not created\n", account.accountNumber);
