@@ -41,6 +41,7 @@
    }
    else {
      while(tree->root->element.accountNumber != searchValue) {
+     
        if(searchValue < tree->root->element.accountNumber) {
          if(tree->root->left->element.accountNumber == searchValue) {
            return tree->root->left;
