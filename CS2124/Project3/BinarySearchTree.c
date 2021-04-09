@@ -48,14 +48,12 @@
            return tempNode->left;
          }
          else {
-           tempNode = tempNode->left;
-           
+           tempNode = tempNode->left; 
          }
        }
        else {
          if(tempNode->right->element.accountNumber == searchValue) {
            return tempNode->right;
-
          }
          else {
            tempNode = tempNode->right;
@@ -64,7 +62,6 @@
      }
      return NULL;
    }
-
  }
 
  //Create a node to store the given Element and add it as a leaf in the BinarySearchTree.  Do not worry about balancing the tree for this project.
@@ -104,7 +101,6 @@
      }
      return FALSE;
    }
-
  }
 
 
@@ -115,9 +111,9 @@
      return;
    }
    NodesInOrder(tree->root);
-    
  }
  
+ //InOrder Helper Function
  void NodesInOrder(NodeT* root) {
    if(root == NULL) {
      return;
@@ -135,11 +131,10 @@
    {
      return;
    }
-   
    NodesPreOrder(tree->root);
-
  }
  
+ //PreOrder Helper Function
  void NodesPreOrder(NodeT* root) {
    if(root != NULL) {
      printf("%d %0.2f\n", root->element.accountNumber, root->element.accountBalance);

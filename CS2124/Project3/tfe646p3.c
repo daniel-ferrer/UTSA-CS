@@ -3,12 +3,10 @@
 
 int main()
 {
-  //FILE *fptr = fopen("smallInput.txt", "r");
   FILE *fptr = fopen("largeInput.txt", "r");
 
   char cmd[8];
   Element account;
-
 
   if(fptr == NULL) {
     perror("Error opening file");
@@ -39,11 +37,9 @@ int main()
       char printType[8];
       fscanf(fptr, "%s", printType);
       if(strcmp(printType, "PREORDER") == 0) {
-        //printf("Printing preorder\n");
         printPreOrder(myTree);
       }
       else if(strcmp(printType, "INORDER") == 0) {
-        //printf("Printing inorder\n");
         printInOrder(myTree);
       }
     }
@@ -52,8 +48,5 @@ int main()
       break;
     }
   }
-
-  //freeBinarySearchTree(myTree);
-
   return 0;
 }
