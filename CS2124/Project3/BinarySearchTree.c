@@ -40,41 +40,30 @@
      return tree->root;
    }
    else {
-     while(tree->root->element.accountNumber != searchValue) {
+     NodeT* tempNode = tree->root;
+     while(tempNode->element.accountNumber != searchValue) {
      
-       if(searchValue < tree->root->element.accountNumber) {
-         if(tree->root->left->element.accountNumber == searchValue) {
-           return tree->root->left;
+       if(searchValue < tempNode->element.accountNumber) {
+         if(tempNode->left->element.accountNumber == searchValue) {
+           return tempNode->left;
          }
          else {
-           tree->root = tree->root->left;
+           tempNode = tempNode->left;
            
          }
        }
        else {
-         if(tree->root->right->element.accountNumber == searchValue) {
-           return tree->root->right;
+         if(tempNode->right->element.accountNumber == searchValue) {
+           return tempNode->right;
 
          }
          else {
-           tree->root = tree->root->right;
+           tempNode = tempNode->right;
          }
        }
      }
      return NULL;
    }
-
- 
-//   if (tree->root == NULL || tree->root->element.accountNumber == searchValue) {
-//     return tree->root;
-//   }
-//   else if(searchValue < tree->root->element.accountNumber) {
-//     return search(tree->root->left, searchValue);
-//   }
-//   else {
-//     return search(tree->root->right, searchValue);
-//   }
-
 
  }
 
@@ -89,26 +78,27 @@
      return TRUE;
    }
    else {
-     while(tree->root != NULL) {
-       if(tree->root->element.accountNumber == value.accountNumber) {
+     NodeT* tempNode = tree->root;
+     while(tempNode != NULL) {
+       if(tempNode->element.accountNumber == value.accountNumber) {
          return FALSE; 
        }
-       else if(value.accountNumber < tree->root->element.accountNumber){
-         if(tree->root->left == NULL) {
-           tree->root->left = node;
+       else if(value.accountNumber < tempNode->element.accountNumber){
+         if(tempNode->left == NULL) {
+           tempNode->left = node;
            return TRUE;
          }
          else {
-           tree->root = tree->root->left;
+           tempNode = tempNode->left;
          }
        }
        else {
-         if(tree->root->right == NULL) {
-           tree->root->right = node;
+         if(tempNode->right == NULL) {
+           tempNode->right = node;
            return TRUE;
          }
          else {
-           tree->root = tree->root->right;
+           tempNode = tempNode->right;
          }
        }
      }
@@ -134,7 +124,7 @@
    }
   
    NodesInOrder(root->left);
-   printf("%d %f\n", root->element.accountNumber, root->element.accountBalance);
+   printf("%d %0.2f\n", root->element.accountNumber, root->element.accountBalance);
    NodesInOrder(root->right);
    
  }
@@ -145,14 +135,14 @@
    {
      return;
    }
-
+   
    NodesPreOrder(tree->root);
 
  }
  
  void NodesPreOrder(NodeT* root) {
    if(root != NULL) {
-     printf("%d %f\n", root->element.accountNumber, root->element.accountBalance);
+     printf("%d %0.2f\n", root->element.accountNumber, root->element.accountBalance);
      NodesPreOrder(root->left);
      NodesPreOrder(root->right);
    }

@@ -3,8 +3,8 @@
 
 int main()
 {
-  FILE *fptr = fopen("smallInput.txt", "r");
-  // FILE *fptr = fopen("largeInput.txt", "r");
+  //FILE *fptr = fopen("smallInput.txt", "r");
+  FILE *fptr = fopen("largeInput.txt", "r");
 
   char cmd[8];
   Element account;
@@ -21,25 +21,17 @@ int main()
 
     if(strcmp(cmd, "CREATE") == 0) {
       fscanf(fptr, "%d", &account.accountNumber);
-      if(insert(myTree, account)) {
-        printf("%d %lf\n", account.accountNumber, account.accountBalance);
-      }
-      else {
-        printf("Account %d not created\n", account.accountNumber);
-      }
+      insert(myTree, account);
     }
 
     else if(strcmp(cmd, "SALE") == 0) {
       int tempAccNum;
       double tempBal;
+      NodeT* tempNode;
       fscanf(fptr, "%d %lf", &tempAccNum, &tempBal);
-      printf("Test\n");
-      if(search(myTree, tempAccNum) == NULL) {
-        printf("Account %d not found\n", tempAccNum);
-      }
-      else {
-        printf("Account %d found\n", tempAccNum);
-        account.accountBalance +=  tempBal;
+      tempNode = search(myTree, tempAccNum);
+      if(tempNode != NULL) {
+         tempNode->element.accountBalance +=  tempBal;
       }
     }
 
@@ -47,17 +39,21 @@ int main()
       char printType[8];
       fscanf(fptr, "%s", printType);
       if(strcmp(printType, "PREORDER") == 0) {
-        printf("Printing preorder\n");
+        //printf("Printing preorder\n");
         printPreOrder(myTree);
       }
       else if(strcmp(printType, "INORDER") == 0) {
-        printf("Printing inorder\n");
+        //printf("Printing inorder\n");
         printInOrder(myTree);
       }
     }
+    else {
+      freeBinarySearchTree(myTree);
+      break;
+    }
   }
 
-  freeBinarySearchTree(myTree);
+  //freeBinarySearchTree(myTree);
 
   return 0;
 }
