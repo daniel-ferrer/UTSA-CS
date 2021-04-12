@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "route-records.h"
+#include "routeRecords.h"
 
 RouteRecord* createRecords(FILE* fileIn)
 {
 	fseek(fileIn, 0, SEEK_SET); //Set cursor at beginning of file
 
-	int count = 0;
+	int i, count = 0;
 	char c;
 
 	//Count number of total records in file
@@ -24,7 +24,7 @@ RouteRecord* createRecords(FILE* fileIn)
 
   	RouteRecord *r = (RouteRecord*)malloc((count + 1) * sizeof(RouteRecord)); //Alloc memory for array
 
-  	for(int i = 0; i < count+1; i++)
+  	for(i = 0; i < count+1; i++)
   	{
   		//Initialize each passenger val to 0
   		r[i].passengers[0] = 0;
