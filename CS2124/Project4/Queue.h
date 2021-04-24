@@ -10,7 +10,9 @@ Purpose:
 #include <string.h>
 #include <stdlib.h>
 
-
+//define const vals
+#define TRUE 1
+#define FALSE 0
 
 //typedef for the Element struct which contains two integers: an ID number and the number of items in the users shopping cart.
 typedef int Element;
@@ -65,3 +67,5 @@ int frontElement(Queue q, Element *e);
 
 //Return TRUE (1) if the queue is empty, otherwise return FALSE (0).
 int isEmptyQueue(Queue q);
+
+void printQueue(Queue q, int start, int destination);

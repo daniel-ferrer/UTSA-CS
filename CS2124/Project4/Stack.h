@@ -10,7 +10,9 @@ Purpose:
 #include <stdlib.h>
 #include <stdio.h>
 
-
+//define const vals
+#define TRUE 1
+#define FALSE 0
 
 //We want two different types of stacks in our program. 
 //When converting infix to postfix, we want a stack to store operators and parenthesis (characters).
@@ -64,4 +66,3 @@ int isEmptyStack(Stack s);
 
 //Return the value of the top element of the stack (without removing it).
 Element topElement(Stack s);
-

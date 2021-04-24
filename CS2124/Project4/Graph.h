@@ -57,3 +57,7 @@ Edge nextAdjacent(Graph g, Edge e);
 //A shortest path should be computed using the Breadth First Search (BFS) algorithm that maintains the parents of each vertex in the shortest path tree as defined in class.  
 //BFS can be implemented directly in this function, or you may create a new function for BFS.
 void shortestPath(Graph g, Vertex start, Vertex destination);
+
+void backtracePath(int* parent, int start, int end, int size);
+
+void printAdjMatrix(Graph g);

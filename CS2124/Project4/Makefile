@@ -1,5 +1,5 @@
 # Define the machine object files for your program
-OBJECTS = abc123Project4.o Queue.o Graph.o Stack.o
+OBJECTS = tfe646Project4.o Queue.o Graph.o Stack.o
 # Define your include file
 INCLUDES = Queue.h Graph.h Stack.h
 
