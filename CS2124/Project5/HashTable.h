@@ -10,6 +10,9 @@ Purpose:
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
+#include <ctype.h>
+#include <math.h>
 
 //Defining the maximum team name length.
 #define MAX_NAME_LENGTH 50
@@ -92,3 +95,6 @@ void put(HashTable h, Element e);
 //if it exists.  If it does not exist, return NULL.
 Element* get(HashTable h, char *teamName);
 
+int powerOfNum(int num, int cnt);
+
+int countDigits(int num);

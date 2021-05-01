@@ -1,5 +1,5 @@
 # Define the machine object files for your program
-OBJECTS = abc123Project5.o HashTable.o
+OBJECTS = tfe646Project5.o HashTable.o
 # Define your include file
 INCLUDES = HashTable.h
 
