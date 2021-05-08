@@ -32,36 +32,22 @@ void freeHashTable(HashTable h) {
 //Given a string, convert it into an integer to be used in either
 //the division method or the midsquare method.
 int stringToInt(char *stringToConvert) {
-    //return atoi(stringToConvert);
-    int i = 0, sum = 0;
-    char ch = stringToConvert[i];
-    printf("len of str is %ld\n", strlen(stringToConvert));
+    cleanString(stringToConvert);
 
-    for(i = 0; ch != '\0' && ch != '\n' && ch != '\r'; i++) {
+    int i, sum = 0, cnt = 0;
+    char ch = stringToConvert[0];
+
+    for(i = 0; ch != '\0'; i++) {
         ch = stringToConvert[i];
         sum += stringToConvert[i];
+
+        if(ch == ' ') {
+            cnt++;
+        }
     }
-    sum = abs(sum);
-    printf("the sum is %d\n", sum);
+
+    sum = abs(sum) - 48 - (32*cnt);
     return sum;
-    
-
-//    int i, total = 0;
-//    char ch = stringToConvert[0];
-   
-//     for(i = 0; ch != '\0'; i++) {
-//         ch = stringToConvert[i];
-//         if(ch == ' ' || ch == '\0') {
-//             continue;
-//         }
-//         //printf("this is to lower %d\n", tolower(ch)-96);
-//         total += tolower(ch) - 96;
-//     }
-
-//     //printf("total is %d\n", total);
-//     //printf("String to convert is %s\n", stringToConvert);
-
-//     return total;
 }
 
 
@@ -71,6 +57,7 @@ int divisionMethod(int key, int n) {
     return (key % n);
 }
 
+//Helper function to count number of digits of int
 int countDigits(int num) {
     int count = 0;
     while(num != 0) {
@@ -80,12 +67,16 @@ int countDigits(int num) {
     return count;
 }
 
-int powerOfNum(int num, int cnt) {
-    while(cnt != 0) {
-        num *= 10;
-        cnt--;
+//Helper function to remove carriage return from stringToClean
+void cleanString(char* stringToClean) {
+    char *src, *dst;
+    for(src = dst = stringToClean; *src != '\0'; src++) {
+        *dst = *src;
+        if(*dst != '\r') {
+            dst++;
+        }
     }
-    return num;
+    *dst = '\0';
 }
 
 
@@ -93,21 +84,10 @@ int powerOfNum(int num, int cnt) {
 //valid index for hashTable.
 int midsquareMethod(int key, int n) {
     key = abs(key*key);
-    int temp = countDigits(key);
-    printf("this is temp %d\n", temp);
-    int min = countDigits(n);
-    printf("this is min %d\n", min);
-    int num1, num2;
+    int digits = countDigits(key);
+    key = (int)(key / pow(10, digits / 2)) % 100;
 
-    if(temp < min) {
-        return temp;
-    }
-
-    num1 = powerOfNum(10, (temp-ceil((temp-min)/2)));
-    num2 = powerOfNum(10, (temp-min)/2);
-    key %= num1;
-    key /= num2;
-    return key;
+    return divisionMethod(key, 100);
 }
 
 
@@ -119,19 +99,16 @@ int midsquareMethod(int key, int n) {
 //values accordingly.
 void put(HashTable h, Element e) {
     int key, idx, i = 0;
-    printf("team name to get is %s\n", e.teamName);
-    key = stringToInt(e.teamName);
-    printf("key is %d\n", key);
-    idx = midsquareMethod(divisionMethod(key, h->n), h->n);
-    printf("this is idx %d\n", idx);
-    
 
+    key = stringToInt(e.teamName);
+    idx = midsquareMethod(key, h->n);
+    
     while(h->hashTable[idx].chainIndex != -2) {
         idx += 1;
         idx %= h->n;
         i++;
 
-        if(i == h->n) {
+        if(i == 100) {
             return;
         }
     }
@@ -144,11 +121,9 @@ void put(HashTable h, Element e) {
 //if it exists.  If it does not exist, return NULL.
 Element* get(HashTable h, char *teamName) {
     int key, idx;
-    //printf("team name to get is %s\n", teamName);
+
     key = stringToInt(teamName);
-    //printf("key is %d\n", key);
     idx = midsquareMethod(key, h->n);
-    //printf("this is idx %d\n", idx);
 
     while(strcmp(h->hashTable[idx].key.teamName, teamName) != 0) {
         idx++;

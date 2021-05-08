@@ -95,6 +95,8 @@ void put(HashTable h, Element e);
 //if it exists.  If it does not exist, return NULL.
 Element* get(HashTable h, char *teamName);
 
-int powerOfNum(int num, int cnt);
 
+//Helper Functions
 int countDigits(int num);
+
+void cleanString(char* stringToClean);

@@ -5,11 +5,11 @@ INCLUDES = HashTable.h
 
 # make for the executable
 p5: ${OBJECTS}
-	gcc -g -o p5 ${OBJECTS}
+	gcc -g -o p5 ${OBJECTS} -lm
 
 # Simple suffix rules for the .o
 %.o: %.c ${INCLUDES}
-	gcc -g -c -O3 $<
+	gcc -g -c -O3 -lm $<
 
 # Clean the .o files
 clean:
