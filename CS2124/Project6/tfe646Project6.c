@@ -44,7 +44,6 @@ void makeHeap(int *heap, int n);
 void heapifyUp(int *heap, int i);
 
 
-
 //heapifyDown is used to restore the heap to a valid configuration
 //after removing the largest value at the top of the heap.  After
 //removing the maximum element at the top of the heap, we would
@@ -54,6 +53,8 @@ void heapifyUp(int *heap, int i);
 //Stop when it's larger than all of its children (or when it no longer
 //has any children).
 void heapifyDown(int *heap, int n, int i);
+
+void swap(int *a, int *b);
 
 
 int main()
@@ -70,10 +71,7 @@ int main()
     
     }
 	
-	
 	heapSort(arrayToSort,n);
-    
-    
     
     for(i=0; i<n; i++){
         
@@ -86,68 +84,65 @@ int main()
 	return 0;
 }
 
-
 void heapSort(int *arrayToSort, int n){
+    makeHeap(arrayToSort, n);
     
-   
-    
+    int i;
+    for(i = n - 1; i > 0; i --) {
+        swap(&arrayToSort[i], &arrayToSort[0]);
+        heapifyDown(arrayToSort, i, 0);
+    }
     
 }
-
-
-
 
 int leftChild(int i){
-	
-	//Placeholder so the project compiles.  You should change this return statement.
-	return 0;
+	return 2*i + 1;
 }
-
-
-
 
 int rightChild(int i){
-	
-	//Placeholder so the project compiles.  You should change this return statement.
-	return 0;
+	return 2*i + 2;
 }
-
-
-
 
 int parent(int i){
-	
-	//Placeholder so the project compiles.  You should change this return statement.
-	return 0;
+	return (i-1)/2;
 }
-
-
-
 
 void makeHeap(int *heap, int n){
-    
-    
-    
+    int i;
+    for(i = n/2 - 1; i >= 0; i--) {
+        heapifyDown(heap, n, i);
+    }
 }
-
-
-
-
 
 void heapifyUp(int *heap, int i){
     
-    
-    
-    
+    if(i != 1 && heap[i] < heap[parent(i)]) {
+        swap(&heap[i], &heap[parent(i)]);
+        heapifyUp(heap, parent(i));
+    }
     
 }
 
-
-
-
 void heapifyDown(int *heap, int n, int i){
+    int left = leftChild(i);
+    int right = rightChild(i);
+    int max = i;
+
+    if(left < n && heap[left] > heap[i]) {
+        max = left;
+    }
+    if(right < n && heap[right] > heap[max]) {
+        max = right;
+    }
+    if(max != i) {
+        swap(&heap[i], &heap[max]);
+        heapifyDown(heap, n, max);
+    }
     
-    
-    
-    
+}
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
