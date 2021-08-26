@@ -40,15 +40,23 @@ public class Show{
 		this.memberCount = memberCount;
 	}
 	
+	public void addCastMember(CastMember member) {
+		int len = cast.length;
+		CastMember[] temp = new CastMember[len + 1];
+		
+		for(int i = 0; i < len; i++) {
+			temp[i] = cast[i];
+		}
+		temp[len] = member;
+		cast = temp;
+	}
 	
 	public String toString() {
 		
 		return CastMember.class.toString();
 	}
 	
-	public void addCastMember(CastMember member) {
-		
-	}
+	
 	
 
 }
