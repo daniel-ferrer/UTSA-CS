@@ -1,18 +1,26 @@
-
-public class Show{
+/**
+ * This class represents a Show object
+ * which contains a title string, CastMember objects and their methods, and a toString() method
+ * 
+ * @author Daniel Ferrer-Sosa (tfe646)
+ * 
+ */
+public class Show extends CastMember{
 	// class attributes
 	private String title;
 	private CastMember[] cast;
 	private int memberCount;
+	private int cnt; // count int to keep track of array pos
 	
 	// default constructor
 	public Show() {}
 	
 	// constructor given param values
 	public Show(String title, int memberCount) {
-		this.title = title;
+		this.title = title; // title of the show
 		this.cast = new CastMember[memberCount];
-		this.memberCount = memberCount; // not needed ?
+		this.memberCount = memberCount; // redundant declaration, not needed ?
+		cnt = 0;
 	}
 	
 	// getters and setters
@@ -40,23 +48,27 @@ public class Show{
 		this.memberCount = memberCount;
 	}
 	
+	// adds CastMember object to CastMember array
 	public void addCastMember(CastMember member) {
-		int len = cast.length;
-		CastMember[] temp = new CastMember[len + 1];
-		
-		for(int i = 0; i < len; i++) {
-			temp[i] = cast[i];
+		if(cnt < cast.length) { // if count of cast members is less than cast.length
+			cast[cnt] = member; // add CastMember to cast array at current pos
+			cnt++; // increment count of current cast members
 		}
-		temp[len] = member;
-		cast = temp;
 	}
 	
+	// prints Show attributes and calls upon toString() method in
+	// CastMember class to return info as string
 	public String toString() {
+		String str = "";
+		str = "Show: " + title + "\n";
+		str += memberCount + " cast members\n";
 		
-		return CastMember.class.toString();
+		if(cast.length > 0) {
+			for(int i = 0; i < cast.length; i++) {
+				str += cast[i].toString();
+			}
+		}
+		
+		return str;		
 	}
-	
-	
-	
-
 }
