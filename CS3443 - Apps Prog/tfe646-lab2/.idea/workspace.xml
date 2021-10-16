@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9ecfe3ba-8ef2-44a3-b89f-9000d10260a4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/PROJECT-1/tfe646/test" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/PROJECT-1/tfe646/test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/PROJECT-2/tfe646/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/PROJECT-2/tfe646/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/zyBooks/zyProg6/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/zyBooks/zyProg6/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/zyBooks/zyProg7/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/zyBooks/zyProg7/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/zyBooks/zyProg9/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS1714 - Intro Prog II/zyBooks/zyProg9/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS2124 - Data Struct/Project1/project1" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS2124 - Data Struct/Project1/project1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS2124 - Data Struct/Project2/project2" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS2124 - Data Struct/Project2/project2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS2124 - Data Struct/Project3/p3" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS2124 - Data Struct/Project3/p3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS2124 - Data Struct/Project5/p5" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS2124 - Data Struct/Project5/p5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/assign1.bash" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/assign1.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/create.bash" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/create.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/delete.bash" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/delete.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/read.bash" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/read.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/update.bash" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment1/update.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment3/assign3.awk" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment3/assign3.awk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment3/assign3.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Assignment3/assign3.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Quiz2/main.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Quiz2/main.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Quiz4/script.sed" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS3424 - Sys Prog/Quiz4/script.sed" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1zVYNzIuDTQwx7IVKlOeCkh5dXB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9ecfe3ba-8ef2-44a3-b89f-9000d10260a4" name="Changes" comment="" />
+      <created>1634234687930</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1634234687930</updated>
+      <workItem from="1634234690881" duration="7000" />
+    </task>
+    <servers />
+  </component>
+</project>
