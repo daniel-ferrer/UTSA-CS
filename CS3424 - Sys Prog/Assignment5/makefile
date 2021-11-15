@@ -1,0 +1,3 @@
+# using one liner because instructions on test cases not using redirection were unclear in homework assignment...
+make:
+	-./assign5 < extra/a5Input.txt
