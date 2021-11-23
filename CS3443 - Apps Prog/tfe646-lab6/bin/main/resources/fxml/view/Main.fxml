@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="834.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainController">
+   <children>
+      <ImageView fitHeight="106.0" fitWidth="100.0" layoutX="405.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../data/logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="542.0" layoutY="14.0" prefHeight="96.0" prefWidth="263.0" text="S.H.I.E.L.D.">
+         <font>
+            <Font name="Arial" size="48.0" />
+         </font>
+      </Label>
+      <Pane fx:id="earthPane" layoutY="124.0" prefHeight="513.0" prefWidth="1280.0">
+         <children>
+            <ImageView fx:id="earth" fitHeight="516.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../data/earth.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Circle fx:id="cptColor" fill="DODGERBLUE" layoutX="21.0" layoutY="656.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="cptStatusLbl" layoutX="41.0" layoutY="644.0" prefHeight="25.0" prefWidth="170.0" text="Captain America">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Circle fx:id="hulkColor" fill="#28c623" layoutX="21.0" layoutY="686.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="hulkStatusLbl" layoutX="41.0" layoutY="674.0" prefHeight="25.0" prefWidth="107.0" text="Hulk">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Circle fx:id="thorColor" fill="#91979e" layoutX="21.0" layoutY="716.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="thorStatusLbl" layoutX="41.0" layoutY="704.0" prefHeight="25.0" prefWidth="100.0" text="Thor">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Circle fx:id="widowColor" layoutX="21.0" layoutY="746.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="widowStatusLbl" layoutX="41.0" layoutY="734.0" prefHeight="25.0" prefWidth="151.0" text="Black Widow">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Circle fx:id="doctorColor" fill="#eebc24" layoutX="21.0" layoutY="776.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="doctorStatusLbl" layoutX="41.0" layoutY="764.0" prefHeight="25.0" prefWidth="170.0" text="Doctor Strange">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Circle fx:id="ironmanColor" fill="#e43020" layoutX="245.0" layoutY="656.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="ironmanStatusLbl" layoutX="270.0" layoutY="644.0" prefHeight="25.0" prefWidth="132.0" text="Iron Man">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Circle fx:id="pantherColor" fill="#953be4" layoutX="245.0" layoutY="686.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="pantherStatusLbl" layoutX="270.0" layoutY="674.0" prefHeight="25.0" prefWidth="151.0" text="Black Panther">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Circle fx:id="spidermanColor" fill="#3227ba" layoutX="245.0" layoutY="747.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="hawkeyeStatusLbl" layoutX="270.0" layoutY="705.0" prefHeight="25.0" prefWidth="132.0" text="Hawkeye">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Circle fx:id="hawkeyeColor" fill="#dd265a" layoutX="245.0" layoutY="717.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="spidermanStatusLbl" layoutX="270.0" layoutY="735.0" prefHeight="25.0" prefWidth="132.0" text="Spiderman">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Circle fx:id="marvelColor" fill="#e1eb1d" layoutX="245.0" layoutY="776.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="marvelStatusLbl" layoutX="270.0" layoutY="764.0" prefHeight="25.0" prefWidth="170.0" text="Captain Marvel">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="avengerImg" fitHeight="165.0" fitWidth="232.0" layoutX="505.0" layoutY="652.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../data/spiderman.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="avengerDescLbl" layoutX="710.0" layoutY="662.0" prefHeight="146.0" prefWidth="190.0" text="Hulk">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lastUpdateLbl" layoutX="960.0" layoutY="783.0" prefHeight="37.0" prefWidth="281.0" text="Last updated: Oct 11, 2021 15:23:30">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
