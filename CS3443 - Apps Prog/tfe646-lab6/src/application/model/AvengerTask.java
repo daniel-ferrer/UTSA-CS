@@ -4,25 +4,58 @@
 package application.model;
 
 import java.util.ArrayList;
+import java.util.Random;
+
+import application.controller.MainController;
+import javafx.concurrent.Task;
+import javafx.scene.layout.Pane;
 
 
 /**
  * @author Daniel Ferrer-Sosa (tfe646)
  *
  */
-public class AvengerTask extends Thread {
+public class AvengerTask implements Runnable {
 	// class attributes
 	ArrayList<Avenger> avengers;
+	Pane earthPane;
 
 	// default constructor
 	public AvengerTask() { }
 	
 	
 	// constructor given @param values
-	public AvengerTask(ArrayList<Avenger> avengers) {
+	public AvengerTask(ArrayList<Avenger> avengers, Pane earthPane) {
 		this.avengers = avengers;
-		
-		
+		this.earthPane = earthPane;
+	}
+
+
+	@Override
+	public void run() {
+		MainController controller = new MainController();
+		Random rand = new Random();
+		for(Avenger avenger: avengers) {
+			
+			if(rand.nextInt(5) == 0) { // 10% chance to change loc
+				
+				double maxLat = earthPane.getPrefHeight();
+				double maxLong = earthPane.getPrefWidth();
+				double new_lat = -1 + (maxLat - (-1)) * rand.nextDouble();
+				double new_long = -1 + (maxLong - (-1)) * rand.nextDouble();
+								
+				avenger.set_lat(String.valueOf(new_lat));
+				avenger.set_long(String.valueOf(new_long));
+				
+				System.out.printf("In thread, %s's img string is %s\n", avenger.getAlias(), avenger.getImg());
+				System.out.printf("In thread, %s's color code is %s\n", avenger.getAlias(), avenger.getColorCode());
+				
+				controller = new MainController();
+				controller.addAvengerLocation(avenger, true, earthPane);
+				
+			}
+		}
+		//controller.updateTime();
 	}
 
 	

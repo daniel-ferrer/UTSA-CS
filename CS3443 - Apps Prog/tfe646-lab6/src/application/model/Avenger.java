@@ -16,7 +16,7 @@ public class Avenger extends Person {
 	private String hasSpecialAbilities;
 	private String _long;
 	private String _lat;
-	private Paint colorCode = null;
+	private Paint colorCode;
 	
 	// default constructor
 	public Avenger() { }
@@ -27,6 +27,7 @@ public class Avenger extends Person {
 		this.alias = alias;
 		this._long = _long;
 		this._lat = _lat;
+		this.colorCode = null;
 		
 		String imgPath = "data/" + alias.toLowerCase().replace(" ", "_") + ".jpg";
 		super.setImg(("file:" + imgPath));

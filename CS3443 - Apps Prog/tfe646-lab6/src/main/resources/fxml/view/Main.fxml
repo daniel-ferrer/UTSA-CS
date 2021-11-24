@@ -47,7 +47,7 @@
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Circle fx:id="widowColor" layoutX="21.0" layoutY="746.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="widowColor" fill="#222020" layoutX="21.0" layoutY="746.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
       <Label fx:id="widowStatusLbl" layoutX="41.0" layoutY="734.0" prefHeight="25.0" prefWidth="151.0" text="Black Widow">
          <font>
             <Font name="Arial" size="13.0" />
