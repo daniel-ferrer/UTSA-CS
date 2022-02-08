@@ -1,3 +1,7 @@
+# vs files
 .vs
 .vscode
 .DS*
+
+# exec files
+a.out
