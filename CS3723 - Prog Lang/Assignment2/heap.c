@@ -10,7 +10,7 @@ static void funny(double param) {
     void *ptr1 = malloc(100);
     void *ptr2 = (void *) "xyz";
     void *ptr3 = (void *) &three;
-    static long hundreed = 100;
+    static long hundred = 100;
     char *abc = "abcdef";
     char *xyz = strdup(abc);
 
@@ -20,7 +20,7 @@ static void funny(double param) {
     printf("%p which points to %p\n", &xyz, xyz);
     printf("local var three is at %p\n", &three);
     printf("local car q is at %p which points to %p", &q, q);
-    printf("static var hundred is at %p\n", &three);
+    printf("static var hundred is at %p\n", &hundred);
     printf("void *ptr1 is at %p which points to %p\n", &ptr1, ptr1);
     printf("void *ptr1 is at %p which points to %p\n", &ptr2, ptr2);
     printf("void *ptr1 is at %p which points to %p\n", &ptr3, ptr3);
