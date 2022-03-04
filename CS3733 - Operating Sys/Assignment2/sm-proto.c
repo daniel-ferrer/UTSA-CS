@@ -26,7 +26,7 @@ void fcfs(char *s1, char *s2, int x1, int y1, int z1,
    int cpuLeft2 = x2;                       /* P2 next CPU burst remaining */
    int ioLeft1 = y1;        /* P1 next IO burst remaining, 0 if no more IO */
    int ioLeft2 = y2;        /* P2 next IO burst remaining, 0 if no more IO */
-   int qleft = quantum;
+   int qleft;
 
    for (i=0; (state1 != DONE) || (state2 != DONE); i++) {
                                 /* running process completes its CPU burst */
