@@ -1,0 +1,8 @@
+Which 2 versions are unsafe when multi-threaded?
+mm2.c because of variable(s) x and y
+and
+mm3.c because of variable(s) mm_t mm
+
+
+Which Version is similar to call-by-name?
+mm6.c
