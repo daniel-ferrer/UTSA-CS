@@ -11,12 +11,27 @@ typedef struct {
 } mm_t;
 
 static void mm4(int argc, char *argv[], mm_t *mm) {
-  TBD
+  int i;  
+
+  int min = 0;
+  int max = 0;
+
+    for (i = 1; i < argc; i++) {
+    int num = atoi(argv[i]);
+    if (num > max){
+      mm->y = num;
+      max = num;
+    } 
+    else if(num < min){
+      mm->x = num;
+      min = num;
+    } 
+  }
 }
 
 int main(int argc, char *argv[]) {
   mm_t mm;
-  TBD
+  mm4(argc, argv, &mm);
   printf("mm4: min=%d max=%d\n", mm.x, mm.y);
   return 0;
 }

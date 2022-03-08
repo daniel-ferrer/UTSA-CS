@@ -9,11 +9,25 @@ static int x;   // min
 static int y;   // max
 
 static void mm2(int argc, char *argv[]) {
-  TBD
+  int i;
+  int min = 0;
+  int max = 0;
+  
+  for (i = 1; i < argc; i++) {
+    int num = atoi(argv[i]);
+    if (num > max){
+      y = num;
+      max = num;
+    } 
+    else if(num < min){
+      x = num;
+      min = num;
+    } 
+  }
 }
 
 int main(int argc, char *argv[]) {
-  TBD
+  mm2(argc, argv);
   printf("mm2: min=%d max=%d\n", x, y);
   return 0;
 }

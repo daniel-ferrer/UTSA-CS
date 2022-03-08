@@ -9,12 +9,23 @@
   x = 1000; \
   y = -1000; \
   int i; \
-  TBD
-  }
+  int min = 0; \
+  int max = 0; \
+  for (i = 1; i < argc; i++) { \
+    int num = atoi(argv[i]); \
+    if (num > max){ \
+      y = num; \
+      max = num; \
+    } \
+    else if(num < min){ \
+      x = num; \
+      min = num; \
+    } \
+  } \
   
 int main(int argc, char *argv[]) {
   int x, y;
-  TBD
+  mm7(argc, argv, x, y);
   printf("mm7: min=%d max=%d\n", x, y);
   return 0;
 }

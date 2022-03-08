@@ -12,12 +12,28 @@ typedef struct {
 
 static mm_t *mm5(int argc, char *argv[]) {
   mm_t *mm = (mm_t *) malloc(sizeof(mm_t));
-  TBD
+  int i;  
+
+  int min = 0;
+  int max = 0;
+
+  for (i = 1; i < argc; i++) {
+    int num = atoi(argv[i]);
+    if (num > max){
+      mm->y = num;
+      max = num;
+    } 
+    else if(num < min){
+      mm->x = num;
+      min = num;
+    } 
+  }
+
   return mm;
 }
 
 int main(int argc, char *argv[]) {
-  TBD
+  mm_t *mm = mm5(argc, argv);
   printf("mm5: min=%d max=%d\n", mm->x, mm->y);
   return 0;
 }

@@ -6,15 +6,32 @@
 #include <stdlib.h>
 
 static int mm1_min(int argc, char *argv[]) {
-  TBD
+  int min = 1000;
+  int i;
+
+  for (i = 1; i < argc; i++) {
+    int num = atoi(argv[i]);
+    if (num < min) min = num;
+  }
+
+  return min;
 }
 
 static int mm1_max(int argc, char *argv[]) {
-  TBD
+  int max = 0;
+  int i;
+  
+  for (i = 1; i < argc; i++) {
+    int num = atoi(argv[i]);
+    if (num > max) max = num;
+  }
+
+  return max;
 }
 
 int main(int argc, char *argv[]) {
-  TBD
+  int x = mm1_min(argc, argv);
+  int y = mm1_max(argc, argv);
   printf("mm1: min=%d max=%d\n", x, y);
   return 0;
 }

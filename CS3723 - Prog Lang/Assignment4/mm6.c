@@ -6,12 +6,27 @@
 #include <stdlib.h>
 
 static void mm6(int argc, char *argv[], int *x, int *y) {
-  TBD
+  int i; 
+
+  int min = 0;
+  int max = 0; 
+
+  for (i = 1; i < argc; i++) {
+    int num = atoi(argv[i]);
+    if (num > max){
+      *y = num;
+      max = num;
+    } 
+    else if(num < min){
+      *x = num;
+      min = num;
+    } 
+  }
 }
 
 int main(int argc, char *argv[]) {
   int x, y;
-  TBD
+  mm6(argc, argv, &x, &y);
   printf("mm6: min=%d max=%d\n", x, y);
   return 0;
 }

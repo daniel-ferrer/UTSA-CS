@@ -6,8 +6,14 @@ import sys
 def mm(args):
   x = 1000
   y = -1000
-  TBD
+  
+  for i in range(0, len(args)):
+    args[i] = int(args[i])
+  
+  x = min(args)
+  y = max(args)
+
   return (x, y)
 
-TBD
+(x,y) = mm(sys.argv[1:])
 print("mm9: min=%d max=%d" % (x, y))
