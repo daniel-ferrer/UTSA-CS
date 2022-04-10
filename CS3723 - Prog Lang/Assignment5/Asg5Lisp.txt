@@ -8,9 +8,9 @@
 (defun removeNILMost(L)
     (cond ( (NULL L) NIL)
           ( (LISTP (CAR L)) (OR (removeNILMost (CAR L)) (removeNILMost(CDR L)))) 
-          ( (EQL NIL (CAR L)) (APPEND (removeNILMost(CDR L))))
-          ( T (CONS   (CAR L)  (removeNILMost(CDR L))))
-    )
+          (( NOT (EQL NIL (CAR L)) ( CONS (CAR L)) (removeNILMost(CDR L))))
+          (T (removeNILMost(CDR L)))
+     )
 )
 
 (defun reverseTop (L) 
