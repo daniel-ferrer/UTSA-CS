@@ -1,0 +1,33 @@
+(defun removeNILTop (L)
+    (cond ( (NULL L) NIL)
+          ( (EQL NIL (CAR L)) (APPEND (removeNILTop (CDR L)))) ;; If the top level of the list is NIL append the rest of the list to a new list until the original list is NIL
+          ( T (CONS  (CAR L)  (removeNILTop(CDR L)))) ;; Once original list is NIL start adding the list back with only the Letters because they return T and not NIL which effectively removes NIL from the top level of a list.
+    )
+)
+
+(defun removeNILMost(L)
+    (cond ( (NULL L) NIL)
+          ( (LISTP (CAR L)) (OR (removeNILMost (CAR L)) (removeNILMost(CDR L)))) 
+          ( (EQL NIL (CAR L)) (APPEND (removeNILMost(CDR L))))
+          ( T (CONS   (CAR L)  (removeNILMost(CDR L))))
+    )
+)
+
+(defun reverseTop (L) 
+   (cond ( (NULL L) NIL)
+         ( (EQL NIL (CAR L)) (APPEND(reverseTOP (CDR L))))
+         ( T (APPEND (reverseTop(CDR L))(list (CAR L)))) ;; Reverses the list without using the Reverse function by appending the CDR of the list to another list with the car being at the end
+   )
+)
+
+(defun reverseAll (L) 
+   (cond ( (NULL L) NIL)
+         ( T (APPEND (reverseAll(CDR L))(LIST (CAR L)))) ;; Reverses the List
+   )
+)
+
+(defun palindrome (L) 
+   (cond ( (NULL L) T)
+         ( T (EQUAL L (reverseAll L))) ;; Checks to see if the List is Equal to the List reversed
+   )
+)
