@@ -1,0 +1,130 @@
+tfe646@fox01:~/UTSA-CS/CS3723 - Prog Lang/Assignment5$ clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo
+  I I I I I I I      8     8   8           8     8     o  8    8
+  I  \ `+' /  I      8         8           8     8        8    8
+   \  `-+-'  /       8         8           8      ooooo   8oooo
+    `-__|__-'        8         8           8           8  8
+        |            8     o   8           8     o     8  8
+  ------+------       ooooo    8oooooo  ooo8ooo   ooooo   8
+
+Welcome to GNU CLISP 2.49 (2010-07-07) <http://clisp.cons.org/>
+
+Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+Copyright (c) Bruno Haible, Marcus Daniels 1994-1997
+Copyright (c) Bruno Haible, Pierpaolo Bernardi, Sam Steingold 1998
+Copyright (c) Bruno Haible, Sam Steingold 1999-2000
+Copyright (c) Sam Steingold, Bruno Haible 2001-2010
+
+Type :h and hit Enter for context help.
+
+[1]> (load "Asg5Lisp.txt" :echo T :print T)
+;; Loading file Asg5Lisp.txt ...
+(defun removeNILTop (L)
+    (cond ( (NULL L) NIL)
+          ( (EQL NIL (CAR L)) (APPEND (removeNILTop (CDR L))))
+          ( T (CONS  (CAR L)  (removeNILTop(CDR L))))
+    )
+)
+REMOVENILTOP
+
+
+(defun removeNILMost(L)
+    (cond ( (NULL L) NIL)
+          ( (NULL(NOT(CAR L)))
+          ( cons (cond ((NOT(ATOM(CAR L)) ) (removeNILMost(CAR L)) )
+                    (T (CAR L)) )
+          ( removeNILMost(CDR L))) )
+          (T (removeNILMost(CDR L)) )
+     )
+)
+REMOVENILMOST
+
+
+(defun reverseTop (L)
+   (cond ( (NULL L) NIL)
+         ( (EQL NIL (CAR L)) (APPEND(reverseTOP (CDR L))))
+         ( T (APPEND (reverseTop(CDR L))(list (CAR L))))
+   )
+)
+REVERSETOP
+
+
+(defun reverseAll (L)
+   (cond ( (NULL L) NIL)
+         ((NOT(ATOM(CAR L))) (APPEND(reverseAll(CDR L)) (LIST (reverseAll(CAR L)))) )
+         ( T (APPEND (reverseAll(CDR L))(LIST (CAR L))))
+   )
+)
+REVERSEALL
+
+
+(defun palindrome (L)
+   (cond ( (NULL L) T)
+         ( T (EQUAL L (reverseAll L)))
+   )
+)
+PALINDROME
+
+
+;; Loaded file Asg5Lisp.txt
+T
+[2]> (load "Asg5LispRun.txt" :echo T :print T)
+;; Loading file Asg5LispRun.txt ...
+;;;  #1 removeNILTop
+
+(removeNILTop '(NIL X NIL NIL Y  NIL Z))
+(X Y Z)
+
+(removeNILTop '(X NIL Y NIL Z NIL))
+(X Y Z)
+
+(removeNILTop '(NIL (X NIL Y) (NIL NIL)))
+((X NIL Y) (NIL NIL))
+
+
+;;; #2 removeNILMost
+
+(removeNILMost '(NIL X NIL NIL Y  NIL Z))
+(X Y Z)
+
+(removeNILMost '(X NIL (Y NIL Z) NIL))
+(X (Y Z))
+
+(removeNILMost '(NIL (NIL) (X NIL Y) (NIL NIL) Z))
+(NIL (X Y) NIL Z)
+
+(removeNILMost '(NIL ( (((((NIL) NIL)))))))
+((((((NIL))))))
+
+
+;;; #3 reverseTop
+
+(reverseTop '(X Y Z))
+(Z Y X)
+
+(reverseTop '(X (Y Z (A)) (W)))
+((W) (Y Z (A)) X)
+
+
+;;; #4 reverseALL
+
+(reverseAll '(X Y Z))
+(Z Y X)
+
+(reverseAll '(X (Y Z (A)) (W)))
+((W) ((A) Z Y) X)
+
+
+;;; #5 palindrome
+
+(palindrome '(R A C E C A R))
+T
+
+(palindrome '(W A S I T A C A R O R A C A T I S A W))
+T
+
+(palindrome '(N I X O N))
+NIL
+;; Loaded file Asg5LispRun.txt
+T
+[3]>

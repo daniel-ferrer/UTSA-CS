@@ -2,19 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "pslibrary.h"
+
 #define VERSION "Spring 2022"
 #define MAX_INDEX 12
 #define MAX_SIZE (6 * MAX_INDEX)
 #define QUANTUM 3
-
-void fcfs(char *s1, char *s2, int x1, int y1, int z1,
-                        int x2, int y2, int z2);
-void sjf(char *s1, char *s2, int x1, int y1, int z1,
-                        int x2, int y2, int z2);
-void psjf(char *s1, char *s2, int x1, int y1, int z1,
-                        int x2, int y2, int z2);
-void rr(char *s1, char *s2, int quantum, int x1, int y1, int z1,
-                        int x2, int y2, int z2);
 
 static void runfcfs(FILE *file, char *s1, char *s2,
                int i1, int i2, int i3, int i4, int i5, int i6) {
