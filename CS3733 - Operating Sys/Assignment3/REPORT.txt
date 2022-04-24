@@ -1,0 +1,9 @@
+part1 checksum: 5d9412a1290e660af7b89782db98b5a9
+
+(1) Nobody helped me on this assignment
+
+(2) I think I got Part 1 correct
+
+(4) I was unable to grasp the concept for Part 2
+
+(5) My prints were written to the output file
