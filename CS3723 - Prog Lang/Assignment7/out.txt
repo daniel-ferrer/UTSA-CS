@@ -1,0 +1,18 @@
+python3 roman.py 812 43 49 5000
+812 is DCCCXII
+43 is XLIII
+49 is XLIX
+5000 is Error
+
+python3 namor.py CCCXIV MCMXCIX CXXXXI IIII 123 MMM II
+CCCXIV is 314
+MCMXCIX is 1999
+CXXXXI is 0
+IIII is 0
+123 is 0
+MMM is 3000
+II is 2
+
+python3 romanamor.py
+Converted 4000 to Error back to 0, which is wrong.
+Checked values from 0 to 4000. Errors = 1.
