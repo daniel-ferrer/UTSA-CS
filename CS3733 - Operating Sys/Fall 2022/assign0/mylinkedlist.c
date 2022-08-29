@@ -1,6 +1,6 @@
 /*
  * File: mylinkedlist.c
- * YOUR NAME ... 
+ * Daniel Ferrer Sosa (tfe646) ... 
  * YOU NEED TO IMPLEMENT THE FUNCTIONS  here
  * ....
  */
@@ -25,6 +25,7 @@ student_cell_T *NewStudentCell(int id, double gpa, char *name)
      fprintf(stderr,"NewStudentCell cannot allocate memory\n");
      return NULL;
    }
+
    element->id = id;
    element->gpa = gpa;
    element->name = name;
@@ -65,7 +66,15 @@ linked_list_T *NewLinkedList(void)
  */
 void FreeLinkedList(linked_list_T *list)
 {
+  student_cell_T *curr = list->head;
 
+  while (curr != NULL)
+  {
+    list->head = list->head->next;
+    free(curr);
+  }
+
+  list->head = NULL;
 }
 
 /*
@@ -76,7 +85,24 @@ void FreeLinkedList(linked_list_T *list)
  */
 void Enlist(linked_list_T *list, student_cell_T *element)
 {
-
+  // if the list is empty, simply add element
+  if (LinkedListIsEmpty(list) == 1)
+    list->head = element;
+  else
+  {
+    if (LinkedListLength(list) == 1)
+    {
+      list->tail = element;
+      list->tail->next = NULL;
+      list->head->next = list->tail;
+    }
+    else
+    {
+      list->tail->next = element;
+      list->tail = list->tail->next;
+    }
+  }
+  return;
 }
 
 /*
@@ -89,7 +115,48 @@ void Enlist(linked_list_T *list, student_cell_T *element)
  */
 student_cell_T *Delist(linked_list_T *list)
 {
+  if(LinkedListIsEmpty(list) == 1)
+  {
+    fprintf(stderr, "Delist cannot remove element from empty list\n");
+    return NULL;
+  }
 
+  student_cell_T *curr = list->head;
+  list->head = list->head->next;
+
+  free(curr);
+
+  return curr;
+}
+
+student_cell_T *DelistMaxGpa(linked_list_T *list)
+{
+  if(LinkedListIsEmpty(list) == 1)
+  {
+    fprintf(stderr, "DelistMaxGpa cannot remove element from empty list\n");
+    return NULL;
+  }
+
+  student_cell_T *maxGpaStudent = FindMaxGpa(list);
+  student_cell_T *curr = list->head;
+  student_cell_T *prev = NULL;
+
+  if(maxGpaStudent != NULL)
+  {
+    while(curr != NULL)
+    {
+      if(curr->id == maxGpaStudent->id)
+      {
+        prev->next = curr->next;
+        free(curr);
+        return curr;
+      }
+      prev = curr;
+      curr = curr->next;
+    }
+  }
+
+  return NULL;
 }
 
 /*
@@ -101,7 +168,10 @@ student_cell_T *Delist(linked_list_T *list)
  */
 int LinkedListIsEmpty(linked_list_T *list)
 {
+  if(list->head == NULL)
+    return 1;
 
+  return 0;
 }
 
 int LinkedListIsFull(linked_list_T *list)
@@ -117,7 +187,15 @@ int LinkedListIsFull(linked_list_T *list)
  */
 int LinkedListLength(linked_list_T  *list)
 {
+  int listLength = 0;
+  student_cell_T *curr = list->head;
 
+  while(curr != NULL)
+  {
+    listLength++;
+    curr = curr->next;
+  }
+  return listLength;
 }
 
 /*
@@ -134,7 +212,20 @@ int LinkedListLength(linked_list_T  *list)
  */
 student_cell_T *GetLinkedListElement(linked_list_T *list, int index)
 {
+  int count = 0;
+  student_cell_T *curr = list->head;
 
+  while(curr != NULL)
+  {
+    if (count == index)
+      return (curr);
+
+    count++;
+    curr = curr->next;
+  }
+
+  fprintf(stderr, "Element out of range\n");
+  return NULL;
 }
 
 
@@ -143,4 +234,68 @@ student_cell_T *GetLinkedListElement(linked_list_T *list, int index)
  * EXPORT THEM HERE, BUT IMPLMENT THEM in mylinkedlist.c 
  */
 
+student_cell_T *FindMinGpa(linked_list_T *list)
+{
+  double minGpa = (double)INT32_MAX;
+  student_cell_T *curr = list->head;
+  student_cell_T *retNode = NULL;
+
+  while(curr != NULL)
+  {
+    if(curr->gpa < minGpa)
+    {
+      minGpa = curr->gpa;
+      retNode = curr;
+    }
+    curr = curr->next;
+  } 
   
+  return retNode;
+}
+
+student_cell_T *FindMaxGpa(linked_list_T *list)
+{
+  double maxGpa = (double)INT32_MIN;
+  student_cell_T *curr = list->head;
+  student_cell_T *retNode = NULL;
+
+  while(curr != NULL)
+  {
+    if(curr->gpa > maxGpa)
+    {
+      maxGpa = curr->gpa;
+      retNode = curr;
+    }  
+    curr = curr->next;
+  }
+
+  return retNode;
+}
+
+double CalculateAvgGpa(linked_list_T *list)
+{
+  double sum = 0;
+  student_cell_T *curr = list->head;
+
+  while(curr != NULL)
+  {
+    sum += curr->gpa;
+    curr = curr->next;
+  }
+
+  return (double) (sum / LinkedListLength(list));
+}
+
+void PrintAllStudents(linked_list_T *list)
+{
+  student_cell_T *curr = list->head;
+
+  while(curr != NULL)
+  {
+    printf("Student Id: %d\n", curr->id);
+    printf("Student GPA: %.2f\n", curr->gpa);
+    printf("Student Name: %s\n\n", curr->name);
+
+    curr = curr->next;
+  }
+}

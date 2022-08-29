@@ -1,7 +1,7 @@
 /*
  * File: mylinkedlist.h
 
- * YOUR NAME ... 
+ * Daniel Ferrer Sosa (tfe646) ... 
  * DO NOT CHANGE THE EXISTING STRUCT OR FUNCTION NAMES HERE
  *
  * WHEN ADDING NEW FUNCTIONS, e.g., listing all students, 
@@ -95,6 +95,11 @@ void Enlist(linked_list_T *list, student_cell_T *element);
  */
 student_cell_T *Delist(linked_list_T *list);
 
+// This function removes the student cell whose id equals @id
+// and returns its address to the caller (client). If the list is empty, DelistById
+// prints an Error with an appropriate message and returns NULL.
+student_cell_T *DelistMaxGpa(linked_list_T *list);
+
 /*
  * Functions: LinkedListIsEmpty, LinkedListIsFull
  * Usage: if (LinkedListIsEmpty(list)) . . .
@@ -132,5 +137,21 @@ student_cell_T *GetLinkedListElement(linked_list_T *list, int index);
 /* OTHER FUNCTIONS YOU WOULD NEED....
  * EXPORT THEM HERE, BUT IMPLMENT THEM in mylinkedlist.c 
  */
+
+
+// This function returns the element with the 
+// smallest GPA value in the list.
+student_cell_T *FindMinGpa(linked_list_T *list);
+
+// This function returns the element with the 
+// largest GPA value in the list.
+student_cell_T *FindMaxGpa(linked_list_T *list);
+
+// This functions calculates the average GPA of the elements
+// in the list and returns the average as a double. 
+double CalculateAvgGpa(linked_list_T *list);
+
+// This function will print all the elements in the list.
+void PrintAllStudents(linked_list_T *list);
 
 #endif

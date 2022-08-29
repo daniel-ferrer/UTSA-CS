@@ -1,12 +1,14 @@
 /*
  * File: driver1.c
- * YOUR NAME ... YOU NEED TO IMPLEMENT THE main() + additional functions if needed
+ * Daniel Ferrer Sosa (tfe646) 
+ * YOU NEED TO IMPLEMENT THE main() + additional functions if needed
  *
  * ....
  */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "mylinkedlist.h"
 
 /* 
@@ -19,23 +21,161 @@
  */
 char *ReadLine(void);
 
+// custom functions
+void ShowMenu(void);
+int DoesNodeExist(linked_list_T*, int);
 
 
- 
 int main(int argc, char *arvg[])
 {
-  // YOU NEED TO IMPLEMENT THIS driver1.c USING FUNCTIONS FROM mylinkedlist.h
-  // But before that, implement your ReadLine() function, and test it as shown below. 
-  // IF NEEDED, YOU CAN ALSO IMLEMENT YOUR OWN FUNCTIONS HERE
+  char charAction[2];
+  int intAction = 0;
+  linked_list_T *studentList;
+  studentList = NewLinkedList();
 
-  char *name;
+  do
+  {
+    ShowMenu();
+    printf("Enter your choice: ");
+    scanf(" %s", charAction);
+    intAction = atoi(charAction);
 
-  printf("Enter a name to test your ReadLine function  : ");
-  name = ReadLine();
-  printf("User entered : %s \n", name);  
-  free(name);
+    int id, idx;
+    double gpa, max;
+    char* name;
+    student_cell_T *student;
 
-  return 0;
+    switch (intAction)
+    {
+      case 1:
+        // create new student 
+        // and add them to the list
+
+       // get student id
+        printf("\nEnter the student's id: ");
+        scanf("%d", &id);
+
+        // don't continue if student id exists
+        if(DoesNodeExist(studentList, id) == 1)
+        {
+          break;
+        }
+
+        // student id did't exists
+        // ask for additional details
+
+        // get student gpa
+        printf("\nEnter the student's gpa (ex: 3.58): ");
+        scanf("%lf", &gpa);
+
+        fflush(stdin); // flushing takes care of unwanted trailing chars
+
+        // get student name
+        printf("\nEnter the student's full name: ");
+        name = ReadLine();
+
+        // all details have been taken in
+        // create and enlist student
+
+        student = NewStudentCell(id, gpa, name);
+
+        Enlist(studentList, student);
+
+        break;
+      
+      case 2:
+        // remove first student from the list
+        // and print their details
+
+        student = Delist(studentList);
+
+        if (student != NULL)
+        {
+          printf("Top student removed...\n");
+          printf("Student Id: %d\n", student->id);
+          printf("Student GPA: %.2f\n", student->gpa);
+          printf("Student Name: %s\n\n", student->name);          
+        }
+        break;
+      
+      case 3:
+        printf("Number of students in list: %d\n\n", LinkedListLength(studentList));
+        break;
+
+      case 4:
+        // print the details of the student and the given position of the list
+
+        // get index
+        printf("Enter the index: ");
+        scanf("%d", &idx);
+
+        // get student using entered index
+        student = GetLinkedListElement(studentList, idx);
+
+        if (student != NULL)
+        {
+          printf("Student Id: %d\n", student->id);
+          printf("Student GPA: %.2f\n", student->gpa);
+          printf("Student Name: %s\n\n", student->name); 
+        }
+        break;
+      
+      case 5:
+        // print all students and their details from the list
+
+        if (LinkedListIsEmpty(studentList) == 0)
+          PrintAllStudents(studentList);
+        else
+          printf("Empty list, no students to print!\n");
+        break;
+
+      case 6:
+        // print min, max, and avg GPAs of elements in the list
+
+        if (LinkedListIsEmpty(studentList) == 0)
+        {
+          student = FindMinGpa(studentList);
+          printf("Min GPA: %.2f\n", student->gpa);
+          student = FindMaxGpa(studentList);
+          printf("Max GPA: %.2f\n", student->gpa);
+          gpa = CalculateAvgGpa(studentList);
+          printf("Avg GPA: %.2f\n\n", gpa);
+        }
+        else
+          printf("Empty list!\n");
+        break;
+
+      case 7:
+        // find the student with the highest GPA
+        // print out their details
+        // and remove them from the list
+
+        student = DelistMaxGpa(studentList);
+
+        if(student != NULL)
+        {
+          printf("Student Id: %d\n", student->id);
+          printf("Student GPA: %.2f\n", student->gpa);
+          printf("Student Name: %s\n\n", student->name);
+        }
+        break;
+
+      case 8:
+        // free mem allocations and exit prog
+
+        free(name);
+        free(student);
+        FreeLinkedList(studentList);
+        break;
+
+      default:
+        printf("Invalid choice, please choose again...\n");
+        break;
+    }
+
+
+  } while (intAction != 8);
+  
 }
 
 /* 
@@ -75,16 +215,70 @@ int main(int argc, char *arvg[])
  */
 char *ReadLine()
 {
-  // A SIMPLE WAY TO IMPLEMENT JUST TO TEST FOR NOW, BUT THIS IS NOT WHAT WE WANT!!!
-  char *buff = malloc(100);
-  scanf("%s", buff);
-  return buff;
+  int c; // getchar() returns an int
+  int i = 0;
+  int inputSize = 10; // used to realloc array size if needed
 
-
-  // YOU NEED TO DELETE ABOVE 3 LINES, and IMPLEMENT THSI as described above
+  // create array to hold input of up to inputSize chars
+  char *readInArray = malloc(inputSize);
+  if (!readInArray)
+  {
+    fprintf(stderr, "ReadLine cannot allocate memory\n");
+    return NULL;
+  }
   
+  while (((c = getchar()) != '\n') && c != EOF)
+  {
+    // realloc array as needed
+    if (i == inputSize-1)
+    {
+      inputSize *= 2;
+      readInArray = realloc(readInArray, inputSize);
+    }
+    // copy char to array
+    readInArray[i++] = c;
+  }
+  readInArray[i] = '\0';
+  
+  int optimalSize = (int)strlen(readInArray);
 
-  return(NULL);   // if there is any error!
+  char *optSizeArray = malloc(optimalSize);
+  strcpy(optSizeArray, readInArray);
+
+  free(readInArray);
+
+  return(optSizeArray);
 }
 
-   
+void ShowMenu()
+{
+  printf("******* ENTER THE NUMBER OF THE OPTION YOU'D LIKE TO SELECT *******\n\n");
+  printf("1 - Create a new student cell with given id, gpa, name info, and add (Enlist) it to the end of the linked list. (if the student id has already been added, don't add that student)\n");
+  printf("2 - Remove (Delist) the first student from linked list and print his/her id, gpa, name info\n");
+  printf("3 - Print the number of students in the linked list (Length)\n");
+  printf("4 - Print (id, gpa, name) of a student at a specific index (head of the list is defined as index 0)\n");
+  printf("5 - Print the list of all studdents in the linked list. Print (id, gpa, name) of every student\n");
+  printf("6 - Print the min, average, max GPAs in the linked list\n");
+  printf("7 - Remove the student with highest GPA and print his/her info (if there are ties, just take the first one you found)\n");
+  printf("8 - Exit\n\n");
+}
+
+int DoesNodeExist(linked_list_T *list, int id)
+{
+  if(LinkedListIsEmpty(list) == 0)
+  {
+    student_cell_T *curr = list->head;
+    while(curr != NULL)
+    {
+      if(curr->id == id)
+      {
+        printf("ID already exists!\n");
+        return 1;
+      }
+      curr = curr->next;
+    }
+  }
+  return 0;
+}
+
+
