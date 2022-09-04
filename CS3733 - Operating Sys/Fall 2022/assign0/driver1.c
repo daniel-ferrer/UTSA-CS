@@ -41,7 +41,7 @@ int main(int argc, char *arvg[])
     intAction = atoi(charAction);
 
     int id, idx;
-    double gpa, max;
+    double gpa;
     char* name;
     student_cell_T *student;
 

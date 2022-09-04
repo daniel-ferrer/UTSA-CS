@@ -236,7 +236,7 @@ student_cell_T *GetLinkedListElement(linked_list_T *list, int index)
 
 student_cell_T *FindMinGpa(linked_list_T *list)
 {
-  double minGpa = (double)INT32_MAX;
+  double minGpa = (double)999999;
   student_cell_T *curr = list->head;
   student_cell_T *retNode = NULL;
 
@@ -255,7 +255,7 @@ student_cell_T *FindMinGpa(linked_list_T *list)
 
 student_cell_T *FindMaxGpa(linked_list_T *list)
 {
-  double maxGpa = (double)INT32_MIN;
+  double maxGpa = (double)0;
   student_cell_T *curr = list->head;
   student_cell_T *retNode = NULL;
 
