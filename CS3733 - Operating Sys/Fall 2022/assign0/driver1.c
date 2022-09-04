@@ -68,8 +68,6 @@ int main(int argc, char *arvg[])
         printf("\nEnter the student's gpa (ex: 3.58): ");
         scanf("%lf", &gpa);
 
-        fflush(stdin); // flushing takes care of unwanted trailing chars
-
         // get student name
         printf("\nEnter the student's full name: ");
         name = ReadLine();
@@ -78,7 +76,6 @@ int main(int argc, char *arvg[])
         // create and enlist student
 
         student = NewStudentCell(id, gpa, name);
-
         Enlist(studentList, student);
 
         break;
@@ -226,6 +223,8 @@ char *ReadLine()
     fprintf(stderr, "ReadLine cannot allocate memory\n");
     return NULL;
   }
+
+  getchar(); // make sure stdin is  clear before taking input 
   
   while (((c = getchar()) != '\n') && c != EOF)
   {
