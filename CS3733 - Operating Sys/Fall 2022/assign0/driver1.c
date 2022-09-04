@@ -175,7 +175,7 @@ int main(int argc, char *arvg[])
 
 
   } while (intAction != 8);
-  
+  return 0;
 }
 
 /* 
