@@ -1,0 +1,7 @@
+1. I worked on this assignment individually, I did not collaborate with anyone.
+
+2. No, some IDs do not print as expected
+
+3. Most if not all of the program functionality is there, but when printing after delisting the ID may return the incorrect number
+
+4. Good assignment, no comments.
