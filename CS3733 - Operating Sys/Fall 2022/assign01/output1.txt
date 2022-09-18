@@ -1,0 +1,9 @@
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/assign01$ make
+gcc -Wall -g wordcount.c -o wordcount
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/assign01$ ./multiple_wordcount input_file_1.txt input_file_2.txt
+wordcount with process id of 3868 counted words in input_file_1.txt: number of words is 6
+wordcount with process id of 3869 counted words in input_file_2.txt: number of words is 12
+Parent process 3867 created 2 child processes to count words in 2 files
+2 files have been counted succesfully
+0 files did not exist
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/assign01$
