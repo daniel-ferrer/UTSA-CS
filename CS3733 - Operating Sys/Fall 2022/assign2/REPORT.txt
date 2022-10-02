@@ -1,0 +1,9 @@
+1. I did not collaborate with anoyone on this assignment
+
+2. For the most part yes, but I did run into issues with getting my RR
+   scheduling function to produce the correct output based on the input file
+
+3. Everything seems to be working with the given text file besides the output of RR
+
+4. The assignment took me a long time to complete and I feel like I could've programmed a more efficient solution
+   but overall it was interesting to implement these CPU scheduling algorithms in C
