@@ -6,22 +6,22 @@
 int main(int argc, char *argv[]) {
     int i, p1Tmp = 0;
     unsigned long LA, PA;
-    char *inFile, *outFile;
+    FILE *inFile = NULL, *outFile = NULL;
     unsigned int pNum, fNum, dNum;
     unsigned int p = 5, f = 3, d = 7;
     unsigned int PT[32] = {2, 4, 1, 7, 3, 5, 6, 0};
 
     if(argv[1] != NULL)
-        inFile = argv[1];
+        inFile = fopen(argv[1], "r");
     else {
-        fprintf(stderr, "No input file specified\n");
+        fprintf(stderr, "Input file not found\n");
         exit(-1);
     }
         
     if(argv[2] != NULL)
-        outFile = argv[2];
+        outFile = fopen(argv[2], "w");
     else {
-        fprintf(stderr, "No output file specified\n");
+        fprintf(stderr, "Output file not found\n");
         exit(-1);
     }
 
@@ -31,13 +31,10 @@ int main(int argc, char *argv[]) {
     }
 
     int pageCount = 0;
-    FILE *fp, *writeFile;
 
-    if(fp == NULL && writeFile == NULL) {
-        fp = fopen(inFile, "r");
-        writeFile = fopen(outFile, "w");
+    if(inFile != NULL && outFile != NULL) {
 
-        while(fread(&LA, sizeof(unsigned long), 1, fp) == 1) {
+        while(fread(&LA, sizeof(unsigned long), 1, inFile) == 1) {
             dNum = (LA & 0x7F);
             pNum = (LA >> d);
             fNum = PT[pNum];
@@ -46,15 +43,15 @@ int main(int argc, char *argv[]) {
             if(p1Tmp != 0)
                 printf("The LA is %lx and Translated PA is %lx\n", LA, PA);
             
-            fwrite(&PA, sizeof(unsigned long), 1, writeFile);
+            fwrite(&PA, sizeof(unsigned long), 1, outFile);
             pageCount++;
         }
 
         if(p1Tmp != 0)
             printf("total number of pages = %d\n", pageCount);
 
-        fclose(fp);
-        fclose(writeFile);
+        fclose(inFile);
+        fclose(outFile);
     }
     else
     {

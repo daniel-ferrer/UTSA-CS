@@ -19,18 +19,17 @@ int main(int argc, char *argv[]) {
     unsigned long LA, PA;
     unsigned int pNum, fNum, dNum;
     unsigned int p = 5, f = 3, d = 7;
-    struct PageTable pageTable[32];
+    struct PageTable PT[32];
     int countLRU[8] = {0}, revMap[8] = {-1};
     int freeFrames[8] = {0, 1, 1, 1, 1, 1, 1, 1};
-    FILE *inFile, *outFile;
+    FILE *inFile = NULL, *outFile = NULL;
 
     for(i = 0; i < 33; i++) {
-        pageTable[i].Vi = 0;
+        PT[i].Vi = 0;
     }
 
-    if(argv[1] != NULL) {
+    if(argv[1] != NULL)
         inFile = fopen(argv[1], "r");
-    }
     else {
         fprintf(stderr, "Input file not found\n");
         exit(-1);
@@ -54,8 +53,8 @@ int main(int argc, char *argv[]) {
         dNum = (LA & 0x07F);
         pNum = (LA >> d);
 
-        if(pageTable[pNum].Vi == 1) {
-            fNum = pageTable[pNum].fNum;
+        if(PT[pNum].Vi == 1) {
+            fNum = PT[pNum].fNum;
             PA = (fNum << d) + dNum;
             fwrite(&PA, sizeof(unsigned long), 1, outFile);
             countLRU[fNum] = clk;
@@ -65,10 +64,10 @@ int main(int argc, char *argv[]) {
             count++;
 
             if(emptyFrame > 0) {
-                pageTable[pNum].fNum = emptyFrame;
-                pageTable[pNum].Vi = 1;
+                PT[pNum].fNum = emptyFrame;
+                PT[pNum].Vi = 1;
 
-                fNum = pageTable[pNum].fNum;
+                fNum = PT[pNum].fNum;
                 PA = (fNum << d) + dNum;
                 fwrite(&PA, sizeof(unsigned long), 1, outFile);
                 revMap[emptyFrame] = pNum;
@@ -77,10 +76,10 @@ int main(int argc, char *argv[]) {
             }
             else {
                 int index = FindLRU(countLRU);
-                pageTable[revMap[index]].Vi = 0;
-                pageTable[pNum].fNum = index;
-                pageTable[pNum].Vi = 1;
-                fNum = pageTable[pNum].fNum;
+                PT[revMap[index]].Vi = 0;
+                PT[pNum].fNum = index;
+                PT[pNum].Vi = 1;
+                fNum = PT[pNum].fNum;
                 PA = (fNum << d) + dNum;
                 fwrite(&PA, sizeof(unsigned long), 1, outFile);
                 countLRU[fNum] = clk;
