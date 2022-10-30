@@ -1,0 +1,31 @@
+(1) I worked individually on this assignment and did not give or receive help
+
+(2) Yes, I believe everything I did was correct 
+
+(3) Everything is working using the given input files
+
+(4) Great assignment to understand how to implement a program
+that mimics memory management in an actually system.
+
+(5) tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/assign3$ make run1
+./part1 part1testsequence part1-out-test
+The LA is 44 and Translated PA is 144
+The LA is 224 and Translated PA is 1a4
+The LA is 168 and Translated PA is e8
+The LA is 28c and Translated PA is 28c
+The LA is dc and Translated PA is 25c
+The LA is 234 and Translated PA is 1b4
+The LA is 98 and Translated PA is 218
+The LA is d0 and Translated PA is 250
+total number of pages = 8
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/assign3$ make run2
+./part1 part1sequence part1-output
+md5sum part1-output
+ceabc02825a5b908e474b053074ab53c  part1-output
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/assign3$ make run3
+./part2 part2sequence part2-output
+Part 2 page faults: 3210
+md5sum part2-output
+c95b27848ae8d4354d87678d075001f7  part2-output
