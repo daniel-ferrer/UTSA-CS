@@ -1,0 +1,82 @@
+1. I did not collaborate with anyone on this assignment
+
+2. I think the sorting as far as I know is correct
+
+4. This assignmment was pretty interesting as we got to implement the functions
+and basic threading concepts that allowed us to analyze the time it takes
+for sorting to complete with a single thread that iterates and sorts the entire
+array in one flow of execution and two threads that each sort one half of the 
+given array with the given size.
+
+5. 
+
+Program output: 
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/assign4$ make run2
+./part1 1000
+Sorting is done in 0.10ms when one thread is used
+Sorting is done in 0.21ms when two threads are used
+./part1 5000
+Sorting is done in 22.60ms when one thread is used
+Sorting is done in 15.67ms when two threads are used
+./part1 10000
+Sorting is done in 90.34ms when one thread is used
+Sorting is done in 79.43ms when two threads are used
+./part1 20000
+Sorting is done in 357.93ms when one thread is used
+Sorting is done in 263.10ms when two threads are used
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/assign4$ make run4
+java part2 1000
+Sorting is done in 7.81 ms when one thread is used
+Sorting is done in 2.37 ms when two threads are used
+java part2 5000
+Sorting is done in 14.94 ms when one thread is used
+Sorting is done in 9.05 ms when two threads are used
+java part2 10000
+Sorting is done in 24.10 ms when one thread is used
+Sorting is done in 12.35 ms when two threads are used
+java part2 20000
+Sorting is done in 66.06 ms when one thread is used
+Sorting is done in 23.69 ms when two threads are used
+
+
+
+********* Part1.c ********************* 
+        |           |  # of
+    N   |   Time    |  threads
+________|___________|______________
+        |  0.10 ms  | Single Thread
+1,000   |  0.21 ms  | Two Threads
+________|___________|______________
+        |  22.60 ms | Single Thread
+5,000   |  15.67 ms | Two Threads
+________|___________|_______________
+        |  90.34 ms | Single Thread
+10,000  |  79.43 ms | Two Threads
+________|___________|________________
+        | 357.93 ms | Single Thread
+20,000  | 263.10 ms | Two Threads
+        |___________|
+
+*Using two threads that sort each half of the array speeds up 
+execution time.
+
+********* Part2.java *******************
+        |           |  # of
+    N   |   Time    |  threads
+________|___________|______________
+        |  7.81 ms  | Single Thread
+1,000   |  2.37 ms  | Two Threads
+________|___________|______________
+        | 14.94 ms  | Single Thread
+5,000   | 9.05 ms  | Two Threads
+________|___________|_______________
+        | 24.10 ms  | Single Thread
+10,000  | 12.35 ms  | Two Threads
+________|___________|________________
+        | 66.06 ms  | Single Thread
+20,000  | 23.69 ms  | Two Threads
+        |___________|
+*Somehow Java seems to be executing the sorting of the arrays
+faster than C when the array sizes are greater than 1,000
