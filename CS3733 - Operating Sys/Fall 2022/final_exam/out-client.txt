@@ -1,0 +1,119 @@
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: rty643
+Client Request: GETSALARY rty643
+GETSALARY rty643
+Server Response: John
+100000.00
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: ncv234
+Client Request: GETSALARY ncv234
+GETSALARY ncv234
+Server Response: Jill
+990000.00
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: pef251
+Client Request: GETSALARY pef251
+GETSALARY pef251
+Server Response: Jim
+142398.00
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: oie663
+Client Request: GETSALARY oie663
+GETSALARY oie663
+Server Response: Juan
+645314.00
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: rbt588
+Client Request: GETSALARY rbt588
+GETSALARY rbt588
+Server Response: Tom
+142398.00
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: jas114
+Client Request: GETSALARY jas114
+GETSALARY jas114
+Server Response: Bill
+789012.00
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: zpq980
+Client Request: GETSALARY zpq980
+GETSALARY zpq980
+Server Response: Dave
+980123.00
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: tqu734
+Client Request: GETSALARY tqu734
+GETSALARY tqu734
+Server Response: Gabe
+524391.00
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: yue150
+Client Request: GETSALARY yue150
+GETSALARY yue150
+Server Response: Joe
+112980.00
+
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ client
+[...]Client waiting for SIGINT Ctrl-C
+^CCTRL-C has been received
+[+] Client-Server Connection Established
+Enter '1' to GETSALARY ID or Enter '2' to STOP:
+1
+Enter an Employee ID: pkh346
+Client Request: GETSALARY pkh346
+GETSALARY pkh346
+Server Response: Liz
+978423.00

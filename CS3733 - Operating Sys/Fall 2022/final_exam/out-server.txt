@@ -1,0 +1,76 @@
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ make 
+gcc -g server.c -o server  -lnsl
+# gcc -g server.c -o server -lsocket -lnsl
+# gcc -g client.c -o client -lsocket -lnsl
+gcc -g client.c -o client  -lnsl
+tfe646@fox01:~/UTSA-CS/CS3733 - Operating Sys/Fall 2022/final_exam$ server
+[+] Server is listening ...
+Server accepted Client ...
+Client Request: GETSALARY rty643
+rty643
+
+John
+100000.00
+
+Server accepted Client ...
+Client Request: GETSALARY ncv234
+ncv234
+
+Jill
+990000.00
+
+Server accepted Client ...
+Client Request: GETSALARY pef251
+pef251
+
+Jim
+142398.00
+
+Server accepted Client ...
+Client Request: GETSALARY oie663
+oie663
+
+Juan
+645314.00
+
+Server accepted Client ...
+Client Request: GETSALARY rbt588
+rbt588
+
+Tom
+142398.00
+
+Server accepted Client ...
+Client Request: GETSALARY jas114
+jas114
+
+Bill
+789012.00
+
+Server accepted Client ...
+Client Request: GETSALARY zpq980
+zpq980
+
+Dave
+980123.00
+
+Server accepted Client ...
+Client Request: GETSALARY tqu734
+tqu734
+
+Gabe
+524391.00
+
+Server accepted Client ...
+Client Request: GETSALARY yue150
+yue150
+
+Joe
+112980.00
+
+Server accepted Client ...
+Client Request: GETSALARY pkh346
+pkh346
+
+Liz
+978423.00
